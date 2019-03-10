@@ -1,0 +1,112 @@
+﻿THIS IS THE HELP TEXT FILE FOR THE WORK LOG SCRIPT.
+_ah_title, 8
+A task must have a title, but the title can be any inputable text, and
+does not have to be unique.  Note, however, that any title search will
+always find all tasks that have duplicate names.  (For example, if two
+tasks are titled "My Task", any title search that finds one will also
+find the other.)  Adding unique identifiers can make searching more
+efficient.  (For example, two tasks titled "My Task 1" and "My Task 2"
+can still both be found by searching for [My Task*], while also being
+searchable individually.)
+_ah_date, 16
+The date of a task can be entered with numbers and dashes or slashes
+(for example, [7-15-12] or [11/9/10]).  Leading zeroes are not required
+(even for the year; the program will interpret "8" in the year position
+as "2008").  If a date is not valid in the selected format, the program
+will check to see if it is valid in a different format, and if it is,
+the program will ask if you want to change the date format to match.
+Dates can also be entered as relative words or phrases.  To
+set a task for the current day, enter [today] (or just press [ENTER]).
+[yesterday], [tomorrow], [day before yesterday] and [day after tomorrow]
+also also valid entries.  A specific day of the week in any week from
+two weeks in the past until two weeks in the future can be specified:
+[tuesday before last], [last tuesday], [this tuesday], [next tuesday],
+or [tuesday after next].  A day of the week entered by itself will be
+interpreted as that day of the current week.¤
+NOTE:  When editing an existing entry, pressing [ENTER] will leave the
+existing date unchanged, rather than changing it to the current day.
+_ah_time, 9
+Times can be entered using numbers or words.  Numeric times can be
+entered with our without a colon ([15:30], [921]).  Because all valid
+number words will be converted to numerals, any mix of words and
+numerals (e.g., [2 ten p.m.], [eleven 55am]) will be correctly
+interpreted.  All times between 1:00 and 12:59 will be assumed to be
+a.m. unless p.m. is specified.  If the time format is set to 12-hour
+time, a.m. or p.m. must always be specified.  Minutes can be entered
+using "after" or "til"/"until" ([15 til three p.m.]).  The British idiom
+"half" ([half 11 pm]) is also valid.
+_ah_duration, 6
+To set a task's duration, enter either the duration directly in minutes,
+hours, and/or days (e.g. [15 minutes], [one and a half hours], [one day,
+15 hours, 27 minutes]) or an ending time.  If an ending time is entered,
+the start time will be subtracted from it to determine the task's
+duration.  (The end time cannot be before the start time, but a task can
+be set to zero minutes, so the start and end times can be the same.)
+_ah_note, 1
+Adding a note for a task is optional.  Any text can be a note.
+_ah_recurrance1, 10
+A task can be set to recur at regular intervals for a period of time.
+The interval can be based on one or more days of the week (for example,
+every other Saturday, every other Tuesday and Thursday), on days during
+the month (such as the 2nd Saturday, or the 1st, 3rd and 4th Monday and
+Friday) or on dates (the 1st and the 15th, or the 22nd, or the next to
+the last day of the month).  A task set to recur based on days or dates
+in a month can be set to skip months (such as the 10th of every third
+month).  However, if you set a task to recur on more than one day of the
+week, the days must have the same interval (for example, you cannot set
+a task to recur every other Tuesday and every third Thursday).
+_ah_recurrance2, 3
+If you would like this task to recur at regular intervals, please select
+an interval below.  If you would like this task to repeat at a specific
+interval other than daily, weekly or monthly, select [Other].
+_ah_recurrance3, 5
+If you want the task to recur on one or more specific days of the week
+(for example, on Tuesdays, or on Wednesdays and Saturdays), select "days
+of the week".  If you want the task to recur on one ore more specific
+days of the month (for example, on the 5th, or on the 13th and 28th),
+select [days of the month].
+_ah_recurrance4, 4
+Enter the date or dates of the month on which you want the task to
+recur, separated by commas.  To count backwards from the end of the
+month, enter negative numbers:  -1 for the last day of the month, -2 for
+the next to the last day, and so on.
+_sh_text, 20
+Enter one or more words or phrases to search for.  To search for an
+exact phrase, enclose it in quote marks.  All searches are OR-based
+unless specified otherwise.  For example, [study greek] will find all
+entries containing the word "study" OR the word "greek"; ["study greek"]
+will find all entries containing the phrase "study greek".  All searches
+are case-insensitive.  Use [+] or the word "and" to make a search (or
+part of a search) AND-based.  For example, [office + break] will find
+all entries containing the word "office" AND the word "break" (whether
+they are together or separated).  You can (but do not need to) use [|]
+or the word "or" to explicitly make a search OR-based.  You can also
+use parentheses to group parts of a search:  ["study hall" + (afternoon
+saturday)] will find all entries containing the phrase "study hall" AND
+either the word "afternoon" OR the word "saturday").¤
+Wildcards:  use [?] for a single character ([c?t] matches "cat", "cot",
+"cut") and [*] for any number of characters ([east*] matches "easter",
+"eastern", "easterly" (but not "east"); [c*ot] matches "cannot",
+"carrot", "compatriot"; [s?ll*] matches "sallow", "silly", "syllable").¤
+NOTE:  You can use question marks and asterisks in titles and notes, and
+search for them directly, by telling the program to perform a literal
+search rather than a wildcard search.
+_sh_re, 8
+WARNING:  This option should be used only by users who are familiar with
+the Python programming language and the format of regular expressions.
+The program will make no attempt to validate the expression entered, and
+malformed expressions may produce unexpected results.¤
+NOTE:  Searches using regular expressions are case-sensitive unless
+specified otherwise.  To make a regular expression search case-
+insensitive, append [, re.I] to the end of the expression.  (No other
+regular expression flags are meaningful for this program.)
+_eh_edit, 9
+The title, date, time, duration, and notes for a task can be edited.
+Note that changes are not made until the edited entry is saved, and the
+log file must be saved for changes to become permanent.  If the task
+being edited is one occurrance in a series, any changes (except to the
+date) can be applied to either the occurrance being edited, or to the
+entire series.  Note that this choice will apply to all changes made
+while editing the entry; if you want to make some changes to a single
+occurrance and other changes to the entire series, you will need to edit
+the entry twice.
