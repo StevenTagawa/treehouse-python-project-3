@@ -10,3 +10,8 @@ LOG CSV FILE USING EXCEL OR ANY OTHER PROGRAM EXCEPT NOTEPAD OR ANOTHER BASIC TE
 strings representing dates and times are stored in a specific format, which Excel or other spreadsheet
 programs may (will) override with their own formats.  This will cause the Work Log script to be unable
 to read those values.
+
+NOTE!!!  Please note that when entering relative dates ("today", "tomorrow", etc.), they are relative
+to the date and time of the environment in which the script is running.  For example, if this script
+is run in Treehouse's Workspaces, which is set to UTC, "today" will become the next day several hours
+ahead of when it does in North America.
