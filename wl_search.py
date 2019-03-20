@@ -181,6 +181,9 @@ def search_by_date(wl_obj):
                 if type(date) == datetime.date:
                     start_date = datetime.datetime.combine(
                       date, datetime.time())
+                # Otherwise the datetime object is already set.
+                else:
+                    start_date = date
                 # end if
                 # If the user wants to search a single date/time...
                 if search_mode == DATE:
@@ -223,6 +226,9 @@ def search_by_date(wl_obj):
                     if type(date) == datetime.date:
                         end_date = datetime.datetime.combine(
                           date, datetime.time.max)
+                    # Otherwise just set the datetime object.
+                    else:
+                        end_date = date
                     # end if
                 # end if
                 # Return the entries to match the search terms.
@@ -973,12 +979,14 @@ def _get_time(wl_obj, t_type, date, start=None):
             # If a time was found, combine it with the date and return,
             #  unless--
             if time:
-                # If the start and end dates are different, the times
-                #  are irrelevant.
-                if date.date > start.date:
+                # If this is the start date, or if this is the end date
+                #  and it is different than the start date, then there
+                #  is no need to check the time; just return the
+                #  combined datetime object.
+                if (start is None) or (date != start.date()):
                     return 1, datetime.datetime.combine(date, time)
-                # If the start and end dates are the same, the end time
-                #  cannot precede the start time.
+                # But if the start and end dates are the same, the end
+                #   time cannot precede the start time.
                 else:
                     if time >= start.time:
                         return 1, datetime.datetime.combine(date, time)
