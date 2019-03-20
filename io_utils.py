@@ -24,6 +24,10 @@
     - yes_no -- gets the user's answer to a yes/no question.
 
     Private Functions:
+    - _menu_build_display_list -- builds the list for a menu.
+    - _menu_display -- displays a menu.
+    - _menu_evaluate_response -- checks the response to a menu.
+    - menu_get_response -- gets a response to a menu.
     - _z_exc -- generic exception handler.
    ---------------------------------------------------------------------
 """
@@ -1235,16 +1239,16 @@ def _menu_evaluate_response(
         # end if
         # Validate each choice.
         for n in range(len(response_list)):
-            # Even if the menu presents options by number or
-            #  keystroke, the user can always make a choice by
-            #  typing the option itself (or just the beginning of
-            #  the option).  But since this can conflict with
-            #  numeric and keystroke entries, don't do this check if
-            #  the response is only one character long.
+            # Even if the menu presents options by number or keystroke,
+            #  the user can always make a choice by typing the option
+            #  itself (or just the beginning of the option).  But since
+            #  this can conflict with numeric and keystroke entries,
+            #  don't do this check if the response is only one character
+            #  long.
             if len(response_list[n]) > 1:
-                # Because this block uses regex methods, first make
-                #  sure that the user input is compilable.  If it's
-                #  not, skip this block entirely.
+                # Because this block uses regex methods, first make sure
+                #  that the user input is compilable.  If it's not, skip
+                #  this block entirely.
                 try:
                     resp_ci = re.compile(response_list[n], re.I)
                     resp = re.compile(response_list[n])
@@ -1255,14 +1259,13 @@ def _menu_evaluate_response(
                     if quit_ and re.match(resp_ci, "quit"):
                         return 0
                     # end if
-                    # Otherwise, the response has to match the
-                    #  beginning of an option (possibly including
-                    #  case).
+                    # Otherwise, the response has to match the beginning
+                    #  of an option (possibly including case).
                     for x in range(len(options)):
                         if match_case:
-                            # If the response matches the beginning
-                            #  of an option, replace the response
-                            #  with the integer.
+                            # If the response matches the beginning of
+                            #  an option, replace the response with the
+                            #  integer.
                             if re.match(resp_ci, options[x]):
                                 response_list[n] = x + 1
                                 break
@@ -1275,8 +1278,8 @@ def _menu_evaluate_response(
                             # end if
                         # end if
                     # end for
-                    # If the response wasn't converted to an
-                    #  integer, it didn't match anything.
+                    # If the response wasn't converted to an integer, it
+                    #  didn't match anything.
                     if type(response_list[n]) != int:
                         invalid_list.append(response_list[n])
                         response_list[n] = "*"
@@ -1285,8 +1288,8 @@ def _menu_evaluate_response(
                     pass
                 # end try
             # end if
-            # For number choices, just make sure that it's a number
-            #  and that it's within the range of options.
+            # For number choices, just make sure that it's a number and
+            #  that it's within the range of options.
             elif keystroke_list == "#":
                 try:
                     response_list[n] = int(response_list[n])
@@ -1319,8 +1322,8 @@ def _menu_evaluate_response(
                 # Check if the response matches one of the options.
                 for x in range(len(keystroke_list)):
                     if match_case:
-                        # If the response matches the option,
-                        #  replace the response with the integer.
+                        # If the response matches the option, replace
+                        #  the response with the integer.
                         if response_list[n] == keystroke_list[x]:
                             response_list[n] = x + 1
                             break
@@ -1359,9 +1362,9 @@ def _menu_evaluate_response(
         #  choice(s).
         # But if ALL the choices were invalid, do not return.
         if (not validate_all) and (response_list):
-            # If multiple is True, return a list (even if it has
-            #  only one element).  If multiple is False, return only
-            #  the first element (even if there are others).
+            # If multiple is True, return a list (even if it has only
+            #  one element).  If multiple is False, return only the
+            #  first element (even if there are others).
             if multiple:
                 return response_list
             else:
@@ -1372,8 +1375,9 @@ def _menu_evaluate_response(
             if len(invalid_list) == 1:
                 err_msg = str(invalid_list[0]) + " is not a valid option."
             else:
-                err_msg = str_utils.comma_str_from_list(
-                  invalid_list) + " are not valid options."
+                err_msg = (
+                  str_utils.comma_str_from_list(invalid_list) +
+                  " are not valid options.")
             # end if
             # Print error message.
             print_status("Error", err_msg, line_length=line_length)
@@ -1398,8 +1402,8 @@ def _menu_get_response(line_length):
        -----------------------------------------------------------------
     """
     try:
-        # Get input from the user, and split it into individual
-        #  items (if more than one choice is entered).
+        # Get input from the user, and split it into individual items
+        #  (if more than one choice is entered).
         response_list = re.split(r",\s*", input("\n>>  "))
         # If the user didn't enter anything, try again.
         if response_list == [""]:
