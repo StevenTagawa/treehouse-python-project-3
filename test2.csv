@@ -1,0 +1,53 @@
+id,title,date,time,datetime,duration,notes,recurring,rec_interval,rec_total,rec_child_seq,rec_parent,info
+626181727,None,None,None,None,None,None,None,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,"{total_entries: 51, date_format: M, time_format: 12, show_help: True, last_modified: 2019-03-18 01:29:29.916536}"
+465183759,Alpha,2019-03-16,18:00:00,2019-03-16 18:00:00,1:00:00,Alpha,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+432960127,Alpha Beta,2019-03-16,19:00:00,2019-03-16 19:00:00,1:00:00,Alpha Beta,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+172855484,Alpha Gamma,2019-03-17,08:00:00,2019-03-17 08:00:00,0:30:00,Alpha Gamma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+788685660,Beta,2019-03-15,12:00:00,2019-03-15 12:00:00,3:45:00,Beta,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+889263493,Beta Gamma,2019-03-11,23:00:00,2019-03-11 23:00:00,0:15:00,Beta Gamma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+140483586,Beta Omega,2019-03-18,10:00:00,2019-03-18 10:00:00,4:00:00,Beta Omega,True,"{unit: 2, skip: 1, days: [2], ordinal: None, dates: None, end: 2019-04-30}",6,None,None,{}
+323349667,Beta Omega,2019-03-25,10:00:00,2019-03-25 10:00:00,4:00:00,Beta Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 6)",140483586,{}
+267520669,Beta Omega,2019-04-01,10:00:00,2019-04-01 10:00:00,4:00:00,Beta Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 6)",140483586,{}
+606510446,Beta Omega,2019-04-08,10:00:00,2019-04-08 10:00:00,4:00:00,Beta Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 6)",140483586,{}
+152921774,Beta Omega,2019-04-15,10:00:00,2019-04-15 10:00:00,4:00:00,Beta Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 6)",140483586,{}
+706338403,Beta Omega,2019-04-22,10:00:00,2019-04-22 10:00:00,4:00:00,Beta Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 6)",140483586,{}
+795759693,Beta Omega,2019-04-29,10:00:00,2019-04-29 10:00:00,4:00:00,Beta Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 6)",140483586,{}
+156711100,Gamma Omega,2019-03-06,09:55:00,2019-03-06 09:55:00,0:05:00,Gamma Omega,True,"{unit: 2, skip: 2, days: [4], ordinal: None, dates: None, end: 2019-05-31}",6,None,None,{}
+715273454,Gamma Omega,2019-03-20,09:55:00,2019-03-20 09:55:00,0:05:00,Gamma Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 6)",156711100,{}
+928256939,Gamma Omega,2019-04-03,09:55:00,2019-04-03 09:55:00,0:05:00,Gamma Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 6)",156711100,{}
+403103296,Gamma Omega,2019-04-17,09:55:00,2019-04-17 09:55:00,0:05:00,Gamma Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 6)",156711100,{}
+935364710,Gamma Omega,2019-05-01,09:55:00,2019-05-01 09:55:00,0:05:00,Gamma Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 6)",156711100,{}
+51061558,Gamma Omega,2019-05-15,09:55:00,2019-05-15 09:55:00,0:05:00,Gamma Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 6)",156711100,{}
+147828853,Gamma Omega,2019-05-29,09:55:00,2019-05-29 09:55:00,0:05:00,Gamma Omega,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 6)",156711100,{}
+350834467,Gamma X-Ray,2019-03-15,10:30:00,2019-03-15 10:30:00,1:00:00,Gamma X-Ray,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+268453419,Delta,2019-03-28,10:55:00,2019-03-28 10:55:00,0:05:00,Delta,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+377320940,Epsilon Mu,2019-03-23,16:30:00,2019-03-23 16:30:00,0:16:00,Epsilon Mu,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+681708732,Gamma Epsilon,2019-03-20,01:00:00,2019-03-20 01:00:00,5:00:00,Gamma Epsilon,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+337668883,Sigma,2019-03-05,05:00:00,2019-03-05 05:00:00,0:01:00,Sigma,True,"{unit: 2, skip: 1, days: [3], ordinal: None, dates: None, end: 2019-05-30}",12,None,None,{}
+890283684,Sigma,2019-03-12,05:00:00,2019-03-12 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 12)",337668883,{}
+404603074,Sigma,2019-03-19,05:00:00,2019-03-19 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 12)",337668883,{}
+656217344,Sigma,2019-03-26,05:00:00,2019-03-26 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 12)",337668883,{}
+485783381,Sigma,2019-04-02,05:00:00,2019-04-02 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 12)",337668883,{}
+793123343,Sigma,2019-04-09,05:00:00,2019-04-09 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 12)",337668883,{}
+37823403,Sigma,2019-04-16,05:00:00,2019-04-16 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 12)",337668883,{}
+606087646,Sigma,2019-04-23,05:00:00,2019-04-23 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 12)",337668883,{}
+670258719,Sigma,2019-04-30,05:00:00,2019-04-30 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 12)",337668883,{}
+637682457,Sigma,2019-05-07,05:00:00,2019-05-07 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(9, 12)",337668883,{}
+739078203,Sigma,2019-05-14,05:00:00,2019-05-14 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(10, 12)",337668883,{}
+402140146,Sigma,2019-05-21,05:00:00,2019-05-21 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(11, 12)",337668883,{}
+685567060,Sigma,2019-05-28,05:00:00,2019-05-28 05:00:00,0:01:00,Sigma,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(12, 12)",337668883,{}
+729018304,Sigma Tau,2019-03-18,07:00:00,2019-03-18 07:00:00,0:01:00,Sigma Tau,True,"{unit: 1, skip: 1, days: None, ordinal: None, dates: None, end: 2019-03-31}",13,None,None,{}
+211860991,Sigma Tau,2019-03-19,07:00:00,2019-03-19 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 13)",729018304,{}
+971291209,Sigma Tau,2019-03-20,07:00:00,2019-03-20 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 13)",729018304,{}
+954885441,Sigma Tau,2019-03-21,07:00:00,2019-03-21 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 13)",729018304,{}
+611510607,Sigma Tau,2019-03-22,07:00:00,2019-03-22 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 13)",729018304,{}
+775674195,Sigma Tau,2019-03-23,07:00:00,2019-03-23 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 13)",729018304,{}
+966859020,Sigma Tau,2019-03-24,07:00:00,2019-03-24 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 13)",729018304,{}
+244699706,Sigma Tau,2019-03-25,07:00:00,2019-03-25 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 13)",729018304,{}
+887656876,Sigma Tau,2019-03-26,07:00:00,2019-03-26 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 13)",729018304,{}
+484734396,Sigma Tau,2019-03-27,07:00:00,2019-03-27 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(9, 13)",729018304,{}
+136837252,Sigma Tau,2019-03-28,07:00:00,2019-03-28 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(10, 13)",729018304,{}
+439088200,Sigma Tau,2019-03-29,07:00:00,2019-03-29 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(11, 13)",729018304,{}
+840163617,Sigma Tau,2019-03-30,07:00:00,2019-03-30 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(12, 13)",729018304,{}
+377791030,Sigma Tau,2019-03-31,07:00:00,2019-03-31 07:00:00,0:01:00,Sigma Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(13, 13)",729018304,{}
+38281644,Eta Tau,2019-03-17,12:00:00,2019-03-17 12:00:00,0:00:00,Eta Tau,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}

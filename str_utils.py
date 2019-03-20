@@ -1,3 +1,34 @@
+"""---------------------------------------------------------------------
+    Contains generic string-related functions.
+
+    Public Functions:
+    - comma_str_from_list -- converts a list into a string, with commas
+       and the word "and" properly inserted.
+    - str_to_container -- converts a string that represents a list,
+       tuple or dictionary to the appropriate type.
+    - str_to_num -- converts a string representing a number to an int,
+       float or complex number.
+    - str_to_bool - converts a string representing True or False (or yes
+       or no) to a bool.
+    - str_to_datetime - converts a string representing a date, time,
+       datetime, or timedelta object to the appropriate object.
+
+    Private Methods:
+    - _date_fromisoformat -- converts a formatted string to a date
+       object; replicates the fromisoformat method for environments
+       below Python 3.7.
+    - _datetime_fromisoformat -- converts a formatted string to a
+       datetime object; replicates the fromisoformat method for
+       environments below Python 3.7.
+    - _time_fromisoformat -- converts a formatted string to a time
+       object; replicates the fromisoformat method for environments
+       below Python 3.7.
+    - _z_exc -- generic exception handler.
+   ---------------------------------------------------------------------
+"""
+
+
+# Imports.
 import re
 import datetime
 
@@ -132,7 +163,7 @@ def str_to_container(string):
         # end while
         # Retrieve the complete item.
         item = string[start:pos]
-            # Strip quote marks.
+        # Strip quote marks.
         if item[0] in ["'", '"'] and item[-1] == item[0]:
             item = item[1:-1]
         # end if
@@ -153,12 +184,12 @@ def str_to_container(string):
             #  and repacking the entire tuple.  We use a temporary list
             #  for this.
         if type(container) == tuple:
-            l = []
+            lst = []
             for x in container:
-                l.append(x)
+                lst.append(x)
             # end for
-            l.append(item)
-            container = tuple(l)
+            lst.append(item)
+            container = tuple(lst)
         # Dictionaries are the most complicated, because items are added
         #  in pairs.
         elif type(container) == dict:
@@ -192,6 +223,7 @@ def str_to_container(string):
     # All done; return the container.
     return container
 # end function
+
 
 def str_to_num(string):
     """-----------------------------------------------------------------
@@ -227,6 +259,7 @@ def str_to_num(string):
     # end if
 # end function
 
+
 def str_to_bool(string):
     """-----------------------------------------------------------------
         Takes a string representation of a boolean (True/False) and
@@ -253,6 +286,7 @@ def str_to_bool(string):
         return string
     # end if
 # end function
+
 
 def str_to_datetime(string):
     """-----------------------------------------------------------------
@@ -331,92 +365,6 @@ def str_to_datetime(string):
     return string
 # end function
 
-def str_to_timedelta(string, sec=True):
-    """-----------------------------------------------------------------
-        Takes a string in standard timedelta format and creates a
-         corresponding timedelta object.
-
-        Arguments:
-        - string -- the source string.
-        - sec -- flag that informs the method that the expression
-           includes seconds (default True).
-
-        Returns:  the timedelta object, or None if the string isn't
-         valid.
-       -----------------------------------------------------------------
-    """
-    str_list=[]
-    # First check to make sure it's a timedelta-formatted string, and
-    #  return if it's not.
-    if not re.fullmatch(
-      r"(\d+ (day|days), )?(\d+:)?(\d{1,2})?:\d{2}", string):
-        return None
-    # Separate out days if it is present.
-    str_list = string.split(", ")
-    # Then split the hours:minutes:seconds, and set the days variable.
-    if len(str_list) == 2:
-        d = int(re.match(r"\d+", str_list[0]).group())
-        td_list = str_list[1].split(":")
-    else:
-        # If days wasn't present, do the hh:mm:ss split and set the days
-        #  variable to 0.
-        d = 0
-        td_list = str_list[0].split(":")
-    # end if
-    # What the elements of td_list represent depends on how many there
-    #  are and the sec flag.
-    if sec:
-        if len(td_list) == 3:
-            h = int(td_list[0])
-            m = int(td_list[1])
-            s = int(td_list[2])
-        elif len(td_list) == 2:
-            m = int(td_list[0])
-            s = int(td_list[1])
-        else:
-            s = int(td_list[0])
-        # end if
-    else:
-        s = 0
-        # If sec is False but there are three elements, assume that the
-        #  expression is in the non-standard but valid format dd:hh:mm.
-        if len(td_list) == 3:
-            d = int(td_list[0])
-            h = int(td_list[1])
-            m = int(td_list[2])
-        elif len(td_list) == 2:
-            h = int(td_list[0])
-            m = int(td_list[1])
-        else:
-            m = int(td_list[0])
-        # end if
-    # end if
-    # Range check.  Rather than returning as invalid an expression with
-    #  elements that are out of range, "roll over" excess units to the
-    #  next higher unit (consistent with timedelta's behavior).
-    #  Negative numbers are still invalid, though.
-    if s < 0:
-        return None
-    else:
-        m += s // 60
-        s = s % 60
-    # end if
-    if m < 0:
-        return None
-    else:
-        h += m // 60
-        m = m % 60
-    # end if
-    if h < 0:
-        return None
-    else:
-        d += h // 24
-        h = h % 24
-    # end if
-    # Create and return the timedelta object.
-    return datetime.timedelta(days=d, hours=h, minutes=m, seconds=s)
-# end function
-
 
 def _date_fromisoformat(string):
     """-----------------------------------------------------------------
@@ -448,7 +396,7 @@ def _datetime_fromisoformat(string):
          3.7 (but only for strings formatted as produced by applying
          str() to a naive datetime object, or applying
          datetime.isoformat() to a naive datetime object with sep=' '.
-         
+
         Arguments:
         - string -- the string to check.
 

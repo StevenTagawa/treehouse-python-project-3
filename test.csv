@@ -1,58 +1,67 @@
 id,title,date,time,datetime,duration,notes,recurring,rec_interval,rec_total,rec_child_seq,rec_parent,info
-554412736,None,None,None,None,None,None,None,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,"{total_entries: 56, date_format: M, time_format: 12, show_help: False, last_modified: 2019-03-10 06:18:32.927026}"
-532889919,Office Hours,2019-03-18,14:00:00,2019-03-18 14:00:00,1:00:00,Regular hours.,True,"{unit: 2, skip: 1, days: [2, 5], ordinal: None, dates: None, end: 2019-05-31}",21,None,None,None
-974633155,Office Hours,2019-03-21,14:00:00,2019-03-21 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 21)",532889919,None
-711709770,Office Hours,2019-03-25,14:00:00,2019-03-25 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 21)",532889919,None
-985728404,Office Hours,2019-03-28,14:00:00,2019-03-28 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 21)",532889919,None
-714582782,Office Hours,2019-04-01,14:00:00,2019-04-01 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 21)",532889919,None
-950696249,Office Hours,2019-04-04,14:00:00,2019-04-04 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 21)",532889919,None
-352187426,Office Hours,2019-04-08,14:00:00,2019-04-08 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 21)",532889919,None
-341142511,Office Hours,2019-04-11,14:00:00,2019-04-11 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 21)",532889919,None
-114929116,Office Hours,2019-04-15,14:00:00,2019-04-15 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 21)",532889919,None
-894741110,Office Hours,2019-04-18,14:00:00,2019-04-18 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(9, 21)",532889919,None
-668727206,Office Hours,2019-04-22,14:00:00,2019-04-22 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(10, 21)",532889919,None
-174763064,Office Hours,2019-04-25,14:00:00,2019-04-25 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(11, 21)",532889919,None
-789694722,Office Hours,2019-04-29,14:00:00,2019-04-29 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(12, 21)",532889919,None
-642454492,Office Hours,2019-05-02,14:00:00,2019-05-02 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(13, 21)",532889919,None
-194080244,Office Hours,2019-05-06,14:00:00,2019-05-06 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(14, 21)",532889919,None
-564304977,Office Hours,2019-05-09,14:00:00,2019-05-09 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(15, 21)",532889919,None
-451258642,Office Hours,2019-05-13,14:00:00,2019-05-13 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(16, 21)",532889919,None
-63323308,Office Hours,2019-05-16,14:00:00,2019-05-16 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(17, 21)",532889919,None
-903264295,Office Hours,2019-05-20,14:00:00,2019-05-20 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(18, 21)",532889919,None
-722587893,Office Hours,2019-05-23,14:00:00,2019-05-23 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(19, 21)",532889919,None
-300596453,Office Hours,2019-05-27,14:00:00,2019-05-27 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(20, 21)",532889919,None
-313846296,Office Hours,2019-05-30,14:00:00,2019-05-30 14:00:00,1:00:00,Regular hours.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(21, 21)",532889919,None
-879884358,Lunch with Lisa,2019-03-13,12:00:00,2019-03-13 12:00:00,1:25:00,Business lunch.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,None
-560746406,Lunch with Leslie,2019-03-22,11:45:00,2019-03-22 11:45:00,1:30:00,Catch up with old friends.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,None
-31258210,Gym,2019-03-11,06:00:00,2019-03-11 06:00:00,0:45:00,Workout,True,"{unit: 2, skip: 1, days: [2, 4, 6], ordinal: None, dates: None, end: 2019-04-30}",21,None,None,None
-522788253,Gym,2019-03-13,06:00:00,2019-03-13 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 21)",31258210,None
-418284644,Gym,2019-03-15,06:00:00,2019-03-15 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 21)",31258210,None
-53711582,Gym,2019-03-18,06:00:00,2019-03-18 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 21)",31258210,None
-605100040,Gym,2019-03-20,06:00:00,2019-03-20 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 21)",31258210,None
-66315633,Gym,2019-03-22,06:00:00,2019-03-22 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 21)",31258210,None
-636688237,Gym,2019-03-25,06:00:00,2019-03-25 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 21)",31258210,None
-316476191,Gym,2019-03-27,06:00:00,2019-03-27 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 21)",31258210,None
-346072830,Gym,2019-03-29,06:00:00,2019-03-29 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 21)",31258210,None
-927358802,Gym,2019-04-01,06:00:00,2019-04-01 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(9, 21)",31258210,None
-200739319,Gym,2019-04-03,06:00:00,2019-04-03 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(10, 21)",31258210,None
-53320046,Gym,2019-04-05,06:00:00,2019-04-05 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(11, 21)",31258210,None
-75183924,Gym,2019-04-08,06:00:00,2019-04-08 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(12, 21)",31258210,None
-130271517,Gym,2019-04-10,06:00:00,2019-04-10 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(13, 21)",31258210,None
-120340015,Gym,2019-04-12,06:00:00,2019-04-12 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(14, 21)",31258210,None
-503052082,Gym,2019-04-15,06:00:00,2019-04-15 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(15, 21)",31258210,None
-353910993,Gym,2019-04-17,06:00:00,2019-04-17 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(16, 21)",31258210,None
-427715200,Gym,2019-04-19,06:00:00,2019-04-19 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(17, 21)",31258210,None
-144617,Gym,2019-04-22,06:00:00,2019-04-22 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(18, 21)",31258210,None
-986198560,Gym,2019-04-24,06:00:00,2019-04-24 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(19, 21)",31258210,None
-905443515,Gym,2019-04-26,06:00:00,2019-04-26 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(20, 21)",31258210,None
-933432147,Gym,2019-04-29,06:00:00,2019-04-29 06:00:00,0:45:00,Workout,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(21, 21)",31258210,None
-119335436,Pick up check,2019-03-15,16:00:00,2019-03-15 16:00:00,0:00:00,Reminder to pick up paycheck.,True,"{unit: 3, skip: 1, days: None, ordinal: None, dates: [-1, 15], end: 2019-07-31}",9,None,None,None
-923829172,Pick up check,2019-03-31,16:00:00,2019-03-31 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 9)",119335436,None
-936546846,Pick up check,2019-04-15,16:00:00,2019-04-15 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 9)",119335436,None
-878130776,Pick up check,2019-04-30,16:00:00,2019-04-30 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 9)",119335436,None
-606057812,Pick up check,2019-05-15,16:00:00,2019-05-15 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 9)",119335436,None
-917785369,Pick up check,2019-05-31,16:00:00,2019-05-31 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 9)",119335436,None
-611281760,Pick up check,2019-06-15,16:00:00,2019-06-15 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 9)",119335436,None
-978163524,Pick up check,2019-06-30,16:00:00,2019-06-30 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 9)",119335436,None
-849847548,Pick up check,2019-07-15,16:00:00,2019-07-15 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 9)",119335436,None
-491816831,Pick up check,2019-07-31,16:00:00,2019-07-31 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(9, 9)",119335436,None
+450764185,None,None,None,None,None,None,None,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,"{total_entries: 65, date_format: M, time_format: 12, show_help: True, last_modified: 2019-03-16 17:04:00.861010}"
+581364980,Office Hours,2019-02-27,09:00:00,2019-02-27 09:00:00,2:00:00,Regular hours...,True,"{unit: 2, skip: 2, days: [3, 5], ordinal: None, dates: None, end: 2019-06-30}",17,None,None,{}
+164363350,Office Hours,2019-02-28,09:00:00,2019-02-28 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 17)",581364980,{}
+136649705,Office Hours,2019-03-12,09:00:00,2019-03-12 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 17)",581364980,{}
+955089867,Office Hours,2019-03-14,09:00:00,2019-03-14 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 17)",581364980,{}
+230677515,Office Hours,2019-03-26,09:00:00,2019-03-26 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 17)",581364980,{}
+953274082,Office Hours,2019-03-28,09:00:00,2019-03-28 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 17)",581364980,{}
+343829088,Office Hours,2019-04-09,09:00:00,2019-04-09 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 17)",581364980,{}
+654733065,Office Hours,2019-04-11,09:00:00,2019-04-11 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 17)",581364980,{}
+113191107,Office Hours,2019-04-23,09:00:00,2019-04-23 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 17)",581364980,{}
+837605269,Office Hours,2019-04-25,09:00:00,2019-04-25 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(9, 17)",581364980,{}
+622020011,Office Hours,2019-05-07,09:00:00,2019-05-07 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(10, 17)",581364980,{}
+76585766,Office Hours,2019-05-09,09:00:00,2019-05-09 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(11, 17)",581364980,{}
+913126818,Office Hours,2019-05-21,09:00:00,2019-05-21 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(12, 17)",581364980,{}
+704735521,Office Hours,2019-05-23,09:00:00,2019-05-23 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(13, 17)",581364980,{}
+186201658,Office Hours,2019-06-04,09:00:00,2019-06-04 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(14, 17)",581364980,{}
+719069663,Office Hours,2019-06-06,09:00:00,2019-06-06 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(15, 17)",581364980,{}
+407002053,Office Hours,2019-06-18,09:00:00,2019-06-18 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(16, 17)",581364980,{}
+892153751,Office Hours,2019-06-20,09:00:00,2019-06-20 09:00:00,2:00:00,Regular hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(17, 17)",581364980,{}
+359070191,Office Hours (Weekend),2019-03-02,14:00:00,2019-03-02 14:00:00,1:00:00,Weekend hours...,True,"{unit: 2, skip: 1, days: [7], ordinal: None, dates: None, end: 2019-06-30}",16,None,None,{}
+64844263,Office Hours (Weekend),2019-03-09,14:00:00,2019-03-09 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 16)",359070191,{}
+816757795,Office Hours (Weekend),2019-03-16,14:00:00,2019-03-16 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 16)",359070191,{}
+663771773,Office Hours (Weekend),2019-03-23,14:00:00,2019-03-23 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 16)",359070191,{}
+663031534,Office Hours (Weekend),2019-03-30,14:00:00,2019-03-30 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 16)",359070191,{}
+748305812,Office Hours (Weekend),2019-04-06,14:00:00,2019-04-06 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 16)",359070191,{}
+862747556,Office Hours (Weekend),2019-04-13,14:00:00,2019-04-13 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 16)",359070191,{}
+500684402,Office Hours (Weekend),2019-04-20,14:00:00,2019-04-20 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 16)",359070191,{}
+920634512,Office Hours (Weekend),2019-05-04,14:00:00,2019-05-04 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 16)",359070191,{}
+684582618,Office Hours (Weekend),2019-05-11,14:00:00,2019-05-11 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(9, 16)",359070191,{}
+310657209,Office Hours (Weekend),2019-05-18,14:00:00,2019-05-18 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(10, 16)",359070191,{}
+462277384,Office Hours (Weekend),2019-05-25,14:00:00,2019-05-25 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(11, 16)",359070191,{}
+814871135,Office Hours (Weekend),2019-06-01,14:00:00,2019-06-01 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(12, 16)",359070191,{}
+780980532,Office Hours (Weekend),2019-06-08,14:00:00,2019-06-08 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(13, 16)",359070191,{}
+412574257,Office Hours (Weekend),2019-06-15,14:00:00,2019-06-15 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(14, 16)",359070191,{}
+11489551,Office Hours (Weekend),2019-06-22,14:00:00,2019-06-22 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(15, 16)",359070191,{}
+594317983,Office Hours (Weekend),2019-06-29,14:00:00,2019-06-29 14:00:00,1:00:00,Weekend hours...,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(16, 16)",359070191,{}
+519585103,Gym,2019-03-04,06:00:00,2019-03-04 06:00:00,0:45:00,Workout.,True,"{unit: 2, skip: 2, days: [2, 5], ordinal: None, dates: None, end: 2019-06-30}",17,None,None,{}
+377360053,Gym,2019-03-07,06:00:00,2019-03-07 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 17)",519585103,{}
+789797413,Gym,2019-03-18,06:00:00,2019-03-18 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 17)",519585103,{}
+942476194,Gym,2019-03-21,06:00:00,2019-03-21 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 17)",519585103,{}
+863098088,Gym,2019-04-01,06:00:00,2019-04-01 06:00:00,1:30:00,Extended workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 17)",519585103,{}
+102321009,Gym,2019-04-04,06:00:00,2019-04-04 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 17)",519585103,{}
+718203561,Gym,2019-04-15,06:00:00,2019-04-15 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 17)",519585103,{}
+850934990,Gym,2019-04-18,06:00:00,2019-04-18 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 17)",519585103,{}
+521399512,Gym,2019-04-29,06:00:00,2019-04-29 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 17)",519585103,{}
+255757150,Gym,2019-05-02,06:00:00,2019-05-02 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(9, 17)",519585103,{}
+256724506,Gym,2019-05-13,06:00:00,2019-05-13 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(10, 17)",519585103,{}
+599706810,Gym,2019-05-16,06:00:00,2019-05-16 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(11, 17)",519585103,{}
+455121751,Gym,2019-05-27,06:00:00,2019-05-27 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(12, 17)",519585103,{}
+244908487,Gym,2019-05-30,06:00:00,2019-05-30 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(13, 17)",519585103,{}
+606452377,Gym,2019-06-10,06:00:00,2019-06-10 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(14, 17)",519585103,{}
+431148532,Gym,2019-06-13,06:00:00,2019-06-13 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(15, 17)",519585103,{}
+594162104,Gym,2019-06-24,06:00:00,2019-06-24 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(16, 17)",519585103,{}
+791583876,Gym,2019-06-27,06:00:00,2019-06-27 06:00:00,0:45:00,Workout.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(17, 17)",519585103,{}
+912901905,Pick up check,2019-02-28,16:00:00,2019-02-28 16:00:00,0:00:00,Reminder to pick up paycheck.,True,"{unit: 3, skip: 1, days: None, ordinal: None, dates: [-1, 15], end: 2019-06-30}",8,None,None,{}
+365910770,Pick up check,2019-03-15,16:00:00,2019-03-15 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(1, 8)",912901905,{}
+326751081,Pick up check,2019-03-31,16:00:00,2019-03-31 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(2, 8)",912901905,{}
+616908948,Pick up check,2019-04-15,16:00:00,2019-04-15 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(3, 8)",912901905,{}
+981993671,Pick up check,2019-04-30,16:00:00,2019-04-30 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(4, 8)",912901905,{}
+134694269,Pick up check,2019-05-15,16:00:00,2019-05-15 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(5, 8)",912901905,{}
+320437292,Pick up check,2019-05-31,16:00:00,2019-05-31 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(6, 8)",912901905,{}
+227243763,Pick up check,2019-06-15,16:00:00,2019-06-15 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(7, 8)",912901905,{}
+271669835,Pick up check,2019-06-30,16:00:00,2019-06-30 16:00:00,0:00:00,Reminder to pick up paycheck.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,"(8, 8)",912901905,{}
+731028722,Lunch with Lisa,2019-03-06,12:00:00,2019-03-06 12:00:00,1:00:00,Lunch out.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+910454662,Unit Brunch,2019-03-05,10:30:00,2019-03-05 10:30:00,1:00:00,Early lunch.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
+41856845,One Recurrance Task,2019-03-16,12:00:00,2019-03-16 12:00:00,2:00:00,This is a task that recurs once.,False,"{unit: None, skip: None, days: None, ordinal: None, dates: None, end: None}",None,None,None,{}
