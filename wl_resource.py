@@ -674,9 +674,10 @@ def set_screen_width(wl_obj):
         while True:
             # Get the new line length (must be >= 40).
             response = io_utils.get_input(
-              msg, typ="int", line_length=wl_obj.line_length)
+              msg, typ="int", line_length=wl_obj.line_length,
+              must_respond=False)
             # If the user quits, leave line_length unchanged.
-            if (response is None):
+            if not response:
                 return
             elif (response < 40):
                 io_utils.print_status(

@@ -853,16 +853,16 @@ def set_time_format(wl_obj):
         if not wl_obj.time_format:
             msg = "The time format has not been set."
         elif wl_obj.time_format == 12:
-            msg = "The current time format is 12-hour (am/pm)."
+            msg = "The current time format is 12-hour (AM/PM)."
         else:  # wl_obj.time_format == 24
-            msg = "The current time format is 24-hour (military time)."
+            msg = "The current time format is 24-hour (Military Time)."
         # end if
         # Print status.
         io_utils.print_status(
           "Status", msg, go=True, line_length=wl_obj.line_length)
         # Display menu and get response.
         response = io_utils.menu(
-          ["12-hour Clock (am/pm)", "24-hour Clock (Military Time)"],
+          ["12-hour Clock (AM/PM)", "24-hour Clock (Military Time)"],
           keystroke_list="#")
         # If the user chose to quit, just return without changing
         #  anything.
