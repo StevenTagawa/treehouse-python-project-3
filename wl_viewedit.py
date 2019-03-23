@@ -34,7 +34,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -91,7 +91,7 @@ ENTRY_ID = 2
 
 
 def browse_entries(wl_obj, entry_list, ndx=0):
-    """-----------------------------------------------------------------
+    """
         Allows the user to browse entries.
 
         Arguments:
@@ -180,7 +180,7 @@ def browse_entries(wl_obj, entry_list, ndx=0):
 
 
 def browse_list(wl_obj, browse_list, start=0):
-    """-----------------------------------------------------------------
+    """
         Presents a list to the user and asks him/her to select one.
 
         Arguments:
@@ -270,7 +270,7 @@ def browse_list(wl_obj, browse_list, start=0):
 
 
 def display_entry(wl_obj, entry, edit=False):
-    """-----------------------------------------------------------------
+    """
         Displays a single log entry.
 
         Arguments:
@@ -351,9 +351,11 @@ def display_entry(wl_obj, entry, edit=False):
 
 
 def _copy_entry(entry):
-    """-----------------------------------------------------------------
-        Creates a duplicate of a log entry object (except for the info
-         dictionary, which should ordinarily be empty).
+    """
+        Creates a duplicate of a log entry object.
+
+        Does not duplicate the info dictionary, which should ordinarily
+         be empty).
 
         Arguments:
         - entry -- the entry to copy.
@@ -385,7 +387,9 @@ def _copy_entry(entry):
 
 
 def _delete_entry(wl_obj, entry_list, ndx):
-    """-----------------------------------------------------------------
+    """
+        Deletes an entry, or a series of entries.
+
         Determines whether an entry marked for deletion is part of a
          recurring series.  If it is, asks the user whether to delete
          the entire series.
@@ -529,7 +533,7 @@ def _delete_entry(wl_obj, entry_list, ndx):
 
 
 def _delete_from_series(wl_obj, del_entry):
-    """-----------------------------------------------------------------
+    """
         Deletes one occurrance from a series of recurring tasks.
 
         Arguments:
@@ -577,7 +581,7 @@ def _delete_from_series(wl_obj, del_entry):
 
 
 def _delete_from_sort(wl_obj, del_entry):
-    """-----------------------------------------------------------------
+    """
         Deletes an entry from the sort indexes.
 
         Arguments:
@@ -609,7 +613,7 @@ def _delete_from_sort(wl_obj, del_entry):
 
 
 def _edit_entry(wl_obj, edit_entry, ndx, total):
-    """-----------------------------------------------------------------
+    """
         Allows the user to edit a log entry.
 
         Arguments:
@@ -720,7 +724,7 @@ def _edit_entry(wl_obj, edit_entry, ndx, total):
 
 
 def _update_entry(wl_obj, entry, resort):
-    """-----------------------------------------------------------------
+    """
         Updates a log entry object's attributes with new values.
 
         Arguments:

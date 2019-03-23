@@ -1,4 +1,4 @@
-"""---------------------------------------------------------------------
+"""
     Contains generic string-related functions.
 
     Public Functions:
@@ -34,7 +34,7 @@ import datetime
 
 
 def comma_str_from_list(lst):
-    """-----------------------------------------------------------------
+    """
         Takes a list or other string-convertible iterable and returns
         a comma-delinated string.
 
@@ -61,7 +61,7 @@ def comma_str_from_list(lst):
 
 
 def str_to_container(string):
-    """-----------------------------------------------------------------
+    """
         Takes a string representation of a list, tuple or dictionary and
          converts it back to that type.  Converts in place any nested
          containers within the main container.  Converts any string
@@ -226,7 +226,7 @@ def str_to_container(string):
 
 
 def str_to_num(string):
-    """-----------------------------------------------------------------
+    """
         Takes a string representation of a number and converts it into a
         numeric type.
 
@@ -261,7 +261,7 @@ def str_to_num(string):
 
 
 def str_to_bool(string):
-    """-----------------------------------------------------------------
+    """
         Takes a string representation of a boolean (True/False) and
          converts it to a bool type.  (Also checks for and converts
          None.)
@@ -289,7 +289,7 @@ def str_to_bool(string):
 
 
 def str_to_datetime(string):
-    """-----------------------------------------------------------------
+    """
         Takes a string representation of a datetime, date, time, or
          timedelta object and converts it to the correct type.
 
@@ -367,7 +367,7 @@ def str_to_datetime(string):
 
 
 def _date_fromisoformat(string):
-    """-----------------------------------------------------------------
+    """
         Creates a date object from a string, if that string is in the
          isoformat format.  Replicates the native date.fromisoformat
          method for environments below Python 3.7.
@@ -389,7 +389,7 @@ def _date_fromisoformat(string):
 
 
 def _datetime_fromisoformat(string):
-    """-----------------------------------------------------------------
+    """
         Creates a datetime object from a string, if that string is in
          the isoformat format.  Replicates the native
          datetime.fromisoformat method for environments below Python
@@ -421,7 +421,7 @@ def _datetime_fromisoformat(string):
 
 
 def _time_fromisoformat(string):
-    """-----------------------------------------------------------------
+    """
         Creates a time object from a string, if that string is in the
          isoformat format.  Replicates the native date.fromisoformat
          method for environments below Python 3.7.

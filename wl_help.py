@@ -1,4 +1,4 @@
-"""---------------------------------------------------------------------
+"""
     Contains the specification for the work log's help object.
 
     Class Definitions:
@@ -15,7 +15,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -46,7 +46,7 @@ except Exception as err:
 
 
 class WlHelp:
-    """-----------------------------------------------------------------
+    """
         Object which handles help strings for the work log script.
 
         Attributes:
@@ -70,7 +70,7 @@ class WlHelp:
 
     def print_help(
       self, show_help, title, label, format_list=[], line_length=80):
-        """-------------------------------------------------------------
+        """
             Prints a help string.
 
             Arguments:
@@ -143,7 +143,7 @@ class WlHelp:
     # end method
 
     def _load_help(self):
-        """-------------------------------------------------------------
+        """
             Loads help text strings from an external file, "help.txt".
 
             Arguments:  none

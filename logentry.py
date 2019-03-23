@@ -1,6 +1,8 @@
-"""---------------------------------------------------------------------
-    Contains the specification of a LogEntry object, which is an object
-     containing information on a single task within the WorkLog object.
+"""
+    Contains the specification of a LogEntry object.
+
+    This object containing information on a single task within the
+     WorkLog object.
 
     Class Definitions:
     - LogEntry -- the log entry object.
@@ -16,7 +18,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -38,6 +40,7 @@ def _z_exc(loc, err):
 
 # Other imports.
 try:
+    import datetime
     import random
 
     import io_utils
@@ -49,7 +52,7 @@ except Exception as err:
 
 
 class LogEntry:
-    """-----------------------------------------------------------------
+    """
         A log entry object.
 
         Attributes:
@@ -86,6 +89,11 @@ class LogEntry:
         - to_dict -- exports the values of the object's attributes to a
            dictionary, which can be written to a file.
 
+        Private Methods:
+        - _convert_dict_key -- converts a string to another type.
+        - _validate_dict_entry -- conducts type checks on date converted
+           from strings.
+
         Magic Methods:
         - __init__ -- creates an empty log entry object.
         - __eq__ -- overrides the = operator to allow object comparison.
@@ -116,7 +124,7 @@ class LogEntry:
     # end method
 
     def __eq__(self, other):
-        """-------------------------------------------------------------
+        """
             Override the equality operator to allow work log objects to
              be compared.
            -------------------------------------------------------------
@@ -125,7 +133,7 @@ class LogEntry:
     # end method
 
     def from_dict(self, dict_entry, line_length=80):
-        """-------------------------------------------------------------
+        """
             Converts a dictionary containing a log entry into a log
              entry object.
 
@@ -135,7 +143,8 @@ class LogEntry:
             Keyword Arguments:
             - line_length -- the screen width in characters.
 
-            Returns:  nothing.
+            Returns:  True if the entry is successfully created, else
+             False.
            -------------------------------------------------------------
         """
         try:
@@ -143,37 +152,29 @@ class LogEntry:
             #  values in the dictionary entry.  Type conversions need to
             #  be done for non-string attributes.
             for key in dict_entry:
-                # Don't do any of this if the string is empty or None.
-                if not dict_entry[key]:
-                    continue
-                elif dict_entry[key][0] in ["(", "[", "{"]:
-                    dict_entry[key] = (
-                      str_utils.str_to_container(dict_entry[key]))
-                else:
-                    dict_entry[key] = str_utils.str_to_num(dict_entry[key])
-                    dict_entry[key] = (
-                      str_utils.str_to_datetime(dict_entry[key]))
-                    dict_entry[key] = str_utils.str_to_bool(dict_entry[key])
-                # end if
+                dict_entry[key] = self._convert_dict_key(key)
             # end for
             # Go through the attributes and set them.
-            try:
-                for attr in self.FIELDNAMES:
-                    setattr(self, attr, dict_entry[attr])
-                # end for
-            except Exception as err:
-                wl_resource.print_status(
-                  "Error", f"Error creating entry:  {err}",
-                  line_length=line_length)
-            # end try
-            return
+            if self._validate_dict_entry(dict_entry) or self.info is not None:
+                try:
+                    for attr in self.FIELDNAMES:
+                        setattr(self, attr, dict_entry[attr])
+                    # end for
+                    return True
+                except Exception as err:
+                    wl_resource.print_status(
+                      "Error", f"Error creating entry:  {err}",
+                      line_length=line_length)
+                # end try
+            else:
+                return False
         except Exception as err:
             _z_exc("logentry.py/from_dict", err)
         # end try
     # end method
 
     def to_dict(self):
-        """-------------------------------------------------------------
+        """
             Creates a dictionary of strings with information from a log
              entry object.
 
@@ -203,6 +204,66 @@ class LogEntry:
             return dict_entry
         except Exception as err:
             _z_exc("logentry.py/to_dict", err)
+        # end try
+    # end method
+
+    def _convert_dict_key(self, string):
+        """
+            Converts a string back to its original type.
+
+            Arguments:
+            - string -- the string to convert.
+
+            Returns:  an object of the appropriate type if possible, or
+             the original string.
+           -------------------------------------------------------------
+        """
+        try:
+            # Don't do any of this if the string is empty or None.
+            if string is None:
+                return None
+            # If the string represents a container, convert it.
+            elif string[0] in ["(", "[", "{"]:
+                string = (
+                  str_utils.str_to_container(string))
+            # Try other type conversions.  Any that fail will leave the
+            #  variable untouched.
+            else:
+                string = str_utils.str_to_num(string)
+                string = (
+                  str_utils.str_to_datetime(string))
+                string = str_utils.str_to_bool(string)
+            # end if
+            return string
+        except Exception as err:
+            _z_exc("logentry.py/convert_dict_key", err)
+        # end try
+    # end method
+
+    def _validate_dict_entry(self, dict_entry):
+        """
+            Validates the types of a dictionary's items.
+
+            Arguments:
+            - dict_entry -- the dictionary to validate.
+
+            Returns:  True if the types are valid, else False.
+           -------------------------------------------------------------
+        """
+        try:
+            # Type-check all of the type-critical items.
+            if (
+              type(dict_entry["id"]) == int and
+              type(dict_entry["date"]) == datetime.date and
+              type(dict_entry["time"]) == datetime.time and
+              type(dict_entry["datetime"]) == datetime.datetime and
+              type(dict_entry["duration"]) == datetime.timedelta):
+                return True
+            else:
+                return False
+            # end if
+        except Exception as err:
+            _z_exc("logentry.py/_validate_dict_entry", err)
         # end try
     # end method
 # end class

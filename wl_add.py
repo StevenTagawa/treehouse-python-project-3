@@ -1,6 +1,5 @@
-"""---------------------------------------------------------------------
-    Contains functions to initialize or update the attributes of a log
-     entry object via user input.
+"""
+    Contains functions to initialize or update a log entry object.
 
     Public Functions:
     - add_date -- sets the log entry object's date attribute.
@@ -36,7 +35,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -77,9 +76,8 @@ MONTHLY = 3
 
 
 def add_date(wl_obj, entry, edit=False):
-    """-----------------------------------------------------------------
-        Gets the user's input for a task date, then sets the log entry's
-         attribute.
+    """
+        Sets the date of a task from user input.
 
         Arguments:
         - wl_obj -- the work log object
@@ -158,7 +156,7 @@ def add_date(wl_obj, entry, edit=False):
 
 
 def add_datetime(entry):
-    """-----------------------------------------------------------------
+    """
         Takes an entry's date and time attributes and combines them.
 
         Arguments:
@@ -176,9 +174,8 @@ def add_datetime(entry):
 
 
 def add_duration(wl_obj, entry, edit=False):
-    """-----------------------------------------------------------------
-        Gets the user's input for a task duration, then sets the log
-         entry's attribute.
+    """
+        Sets the duration of a task from user input.
 
         Arguments:
         - wl_obj -- the work log object
@@ -265,7 +262,7 @@ def add_duration(wl_obj, entry, edit=False):
 
 
 def add_note(wl_obj, entry, edit=False):
-    """-----------------------------------------------------------------
+    """
         Allows the user to add a note for a task.
 
         Arguments:
@@ -336,9 +333,8 @@ def add_note(wl_obj, entry, edit=False):
 
 
 def add_recurrance(wl_obj, entry):
-    """-----------------------------------------------------------------
-        Asks the user if he/she wants the task to be recurring, and if
-         yes, determines the recurrance dates.
+    """
+        Sets the recurrance of a task if the user so chooses.
 
         Arguments:
         - wl_obj -- the work log object
@@ -412,9 +408,8 @@ def add_recurrance(wl_obj, entry):
 
 
 def add_time(wl_obj, entry, edit=False):
-    """-----------------------------------------------------------------
-        Gets the user's input for a task time, then sets the log entry's
-         attribute.
+    """
+        Sets the time for a task from user input.
 
         Arguments:
         - wl_obj -- the work log object
@@ -498,9 +493,8 @@ def add_time(wl_obj, entry, edit=False):
 
 
 def add_title(wl_obj, entry, edit=False):
-    """-----------------------------------------------------------------
-        Gets the user's input for a task title, then sets the log
-         entry's attribute.
+    """
+        Sets the title for a task from user input.
 
         Arguments:
         - wl_obj -- the work log object
@@ -578,9 +572,8 @@ def add_title(wl_obj, entry, edit=False):
 
 
 def _find_recurrances(wl_obj, entry):
-    """-----------------------------------------------------------------
-        Prompts the user to set the frequency and range of a task's
-         recurrance.
+    """
+        Allows the user to input how frequently a task will recur.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -781,7 +774,7 @@ def _find_recurrances(wl_obj, entry):
 
 
 def _get_dates(wl_obj):
-    """-----------------------------------------------------------------
+    """
         Gets a list of integers representing dates from the user.
 
         Arguments:
@@ -841,9 +834,8 @@ def _get_dates(wl_obj):
 
 
 def _screen_reset(wl_obj, entry, entry_number):
-    """-----------------------------------------------------------------
-        Internal function which refreshes the screen with a log entry's
-         attributes.
+    """
+        Refreshes the screen with a task's attributes.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -880,9 +872,9 @@ def _screen_reset(wl_obj, entry, entry_number):
 
 
 def _screen_reset_edit(wl_obj, entry):
-    """-----------------------------------------------------------------
-        Internal function which refreshes the screen with an existing
-         log entry's attributes, and proposed edits.
+    """
+        Refreshes the screen with an existing task's attributes,
+         and proposed edits.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -924,9 +916,10 @@ def _screen_reset_edit(wl_obj, entry):
 
 
 def _set_occurrances(wl_obj, entry):
-    """-----------------------------------------------------------------
-        Obtains an end date for a recurring task, and calculates the
-         specific dates for the task.
+    """
+        Calculates the specific dates for a recurring task.
+
+        Obtains an end date of recurrances from the user.
 
         Arguments:
         - wl_obj -- the work log object.

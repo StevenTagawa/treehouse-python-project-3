@@ -1,4 +1,4 @@
-"""---------------------------------------------------------------------
+"""
     Contains the specification for the WorkLog object.
 
     Class Definitions:
@@ -15,7 +15,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -60,8 +60,8 @@ TIME_F = 2
 
 
 class WorkLog:
-    """-----------------------------------------------------------------
-        Object containing data describing a task in the work log.
+    """
+        Object containing one or more task entries.
 
         Attributes:
         - entries -- a list of individual entries, each of which is a
@@ -91,24 +91,31 @@ class WorkLog:
         - action_take -- takes the action the user specifies.
 
         Private Methods:
+        - _add_entry -- adds a single entry to the work log object.
+        - _add_recurring_entries -- adds a series of recurring entries
+           to the work log object.
         - _do_add -- creates a new LogEntry object, initializes it with
-           input from the user, and adds it to the WorkLog object.
+           input from the user, and adds it to the work log object.
         - _do_add_recurring_entries -- if the user has indicated that
            he/she wants a task to recur at certain intervals, creates
            the recurring entries and adds them to the WorkLog object.
-        - _do_close -- closes the file that the WorkLog object is
+        - _do_close -- closes the file that the work log object is
            associated with; if the WorkLog object has changed, prompts
            the user to save the file.
-        - _do_create -- creates a new file for a new WorkLog object; if
+        - _do_create -- creates a new file for a new work log object; if
            the file exists, prompts the user to open or overwrite that
            file, or to enter a different filename.
         - _do_lookup -- searches for entries based on the user's input;
            allows the user to edit or delete entries that are found.
-        - _do_open -- opens a file and populates the WorkLog object with
-           its data.
+        - _do_open -- opens a file and populates the work log object
+           with its data.
         - _do_save -- saves the data in the WorkLog object to a file.
-        - _do_sort -- updates the WorkLog object's sorted lists when a
+        - _do_sort -- updates the work log object's sorted lists when a
            new entry is added.
+        - _init_entries -- initializes log entries from data read from
+           a file, and adds the entries to the work log object.
+        - _init_worklog -- initializes the work log object from data
+           read from a file.
 
         Magic Methods:
         - __init__ -- creates a new WorkLog object.
@@ -117,7 +124,7 @@ class WorkLog:
     """
 
     def __init__(self):
-        """-------------------------------------------------------------
+        """
             Returns an empty log object.
 
             Sets the total_entries attribute to -1 as a flag that the
@@ -141,19 +148,21 @@ class WorkLog:
     # end method
 
     def __eq__(self, other):
-        """-------------------------------------------------------------
-            Override the equality operator to allow work log objects to
-             be compared.
+        """
+            Overrides the equality operator.
+
+            Allows work log objects to be compared with "=".
            -------------------------------------------------------------
         """
         return self.__dict__ == other.__dict__
     # end method
 
     def action_get(self):
-        """-------------------------------------------------------------
-            If the log object is unitialized, ask the user to open or
-             create a file.  If the log object is initialized, get an
-             action from the user.
+        """
+            Gets an action from the user.
+
+            If the log object is unitialized, asks the user to open or
+             create a file.
 
             Arguments:  none.
 
@@ -169,7 +178,8 @@ class WorkLog:
                 keystroke_list = ["O", "N", "X"]
                 action = io_utils.menu(
                   ["Open log file", "New log file", "Settings"],
-                  keystroke=True, keystroke_list=keystroke_list, lines=True,
+                  option_type="actions", keystroke=True,
+                  keystroke_list=keystroke_list, lines=True,
                   top_level=True, line_length=self.line_length)
                 # If the user chooses to quit here...
                 if action == 0:
@@ -225,10 +235,12 @@ class WorkLog:
     # end method
 
     def action_take(self):
-        """-------------------------------------------------------------
-            Takes the action specified in the object's action attribute.
-             If the action attribute is set to None, the method
-             immediately exits to the main menu.
+        """
+            Takes the action specified by the user.
+
+            Action is stored in the object's action attribute.  If the
+            action attribute is set to None, the method immediately
+            exits to the main menu.
 
             Arguments:  none.
 
@@ -284,9 +296,8 @@ class WorkLog:
     # end method
 
     def _do_add(self):
-        """-------------------------------------------------------------
-            Internal method that adds one or more entry objects to the
-             log object.
+        """
+            Adds one or more entry objects to the log object.
 
             Arguments:  none.
 
@@ -380,35 +391,7 @@ class WorkLog:
                         attrib += go
                     # end if
                 # end while
-                # Set the datetime attribute.
-                new_entry.datetime = wl_add.add_datetime(new_entry)
-                # Add the entry to the work log.
-                self._do_sort(new_entry)
-                self.entries.append(new_entry)
-                # Now add the recurring entries, if any.
-                self._do_add_recurring_entries(
-                  new_entry, recurring_entries)
-                # And update.
-                self.total_entries = len(self.entries)
-                # Note the log object has changed.
-                self.changed = True
-                # Build status message.
-                if recurring_entries:
-                    msg = f"{len(recurring_entries) + 1} entries added."
-                else:
-                    msg = "Entry added."
-                # end if
-                # Update the total entries attribute.
-                self.total_entries = len(self.entries)
-                # Print that the entry was added.
-                io_utils.print_status(
-                  "Status", msg, line_length=self.line_length)
-                # Finally, ask the user if they want to add another
-                #  entry.  (Whether they are done will be the opposite
-                #  of their answer.)
-                not_done = io_utils.yes_no(
-                  "Do you want to add another task?",
-                  line_length=self.line_length)
+                not_done = self._add_entry(new_entry, recurring_entries)
             # end while
             return
         except Exception as err:
@@ -416,9 +399,55 @@ class WorkLog:
         # end try
     # end method
 
-    def _do_add_recurring_entries(self, entry, recurrance_list):
-        """-------------------------------------------------------------
-            Creates recurring entries based on a template entry and adds
+    def _add_entry(self, entry, recurring_entries):
+        """
+            Adds one entry.
+
+            Arguments:
+            - entry -- the entry to add.
+            - recurring_entries -- the list of recurring entries, if
+               there are any.
+
+            Returns:  True if the user wants to add another task, else
+             False.
+           -------------------------------------------------------------
+        """
+        try:
+            # Set the datetime attribute.
+            entry.datetime = wl_add.add_datetime(entry)
+            # Add the entry to the work log.
+            self._do_sort(entry)
+            self.entries.append(entry)
+            # Now add the recurring entries, if any.
+            self._add_recurring_entries(entry, recurring_entries)
+            # And update.
+            self.total_entries = len(self.entries)
+            # Note the log object has changed.
+            self.changed = True
+            # Build status message.
+            if recurring_entries:
+                msg = f"{len(recurring_entries) + 1} entries added."
+            else:
+                msg = "Entry added."
+            # end if
+            # Update the total entries attribute.
+            self.total_entries = len(self.entries)
+            # Print that the entry was added.
+            io_utils.print_status(
+              "Status", msg, line_length=self.line_length)
+            # Finally, ask the user if they want to add another
+            #  entry.  (Whether they are done will be the opposite
+            #  of their answer.)
+            return io_utils.yes_no(
+              "Do you want to add another task?", line_length=self.line_length)
+        except Exception as err:
+            _z_exc("worklog.py/WorkLog/do_add", err)
+        # end try
+    # end method
+
+    def _add_recurring_entries(self, entry, recurrance_list):
+        """
+            Adds a series of recurring entries.
 
             Arguments:
             - entry -- the original entry.
@@ -461,10 +490,11 @@ class WorkLog:
     # end method
 
     def _do_close(self):
-        """-------------------------------------------------------------
-            Internal method that closes the work log object, leaving it
-             to be overwritten by a new instance (if the user chooses to
-             work with a new file) or destroyed upon program exit.
+        """
+            Closes the work log object.
+
+            The object will be overwritten by a new instance, or
+             destroyed upon program exit.
 
             Arguments:  none.
 
@@ -491,9 +521,11 @@ class WorkLog:
     # end method
 
     def _do_create(self):
-        """-------------------------------------------------------------
-            Creates a new file to store data from the log object; if the
-             user names an existing file, offers to open that file.
+        """
+            Creates a new file to store data from the log object.
+
+            If the user names an existing file, offers to open that
+             file.
 
             Arguments:  none.
 
@@ -530,7 +562,7 @@ class WorkLog:
     # end method
 
     def _do_lookup(self):
-        """-------------------------------------------------------------
+        """
             Searches for and displays one or more log entries.
 
             Arguments:  none.
@@ -589,7 +621,7 @@ class WorkLog:
     # end method
 
     def _do_open(self):
-        """-------------------------------------------------------------
+        """
             Opens a log file and reads data into the log object.
 
             Arguments:  none.
@@ -598,7 +630,6 @@ class WorkLog:
            -------------------------------------------------------------
         """
         try:
-            flag = 0
             # If we don't have a filename, get one.
             if self.filename == "":
                 self.filename = io_utils.get_filename_open(filetype="csv")
@@ -617,67 +648,20 @@ class WorkLog:
                   "Error", f"{self.filename} could not be opened.")
                 return False
             # end if
-            # The first entry contains data on the log object.
-            new_entry = logentry.LogEntry()
-            try:
-                # Convert the log object information (stored in the info
-                #  field of the first entry obuject) into a dictionary.
-                new_entry.from_dict(entry_dict[0])
-                # Set the log object's attributes from the dictionary.
-                self.total_entries = new_entry.info["total_entries"]
-                # But only set the format attributes if the user has not
-                #  already set them.
-                if not self.date_format:
-                    self.date_format = new_entry.info["date_format"]
-                # end if
-                if not self.time_format:
-                    self.time_format = new_entry.info["time_format"]
-                # end if
-                self.show_help = new_entry.info["show_help"]
-                self.last_modified = new_entry.info["last_modified"]
-            except Exception as err:
-                io_utils.print_status(
-                  "Error", f"Error reading log info:  {err}",
-                  line_length=self.line_length)
+            # Pop the first entry in the list of dictionaries that was
+            #  read from the file and use it to initialize the work log
+            #  object.  Return False if the operation fails.
+            if not self._init_worklog(entry_dict.pop(0)):
                 return False
-            # end try
-            # Get rid of the first entry.
-            del entry_dict[0]
-            # Then iterate through the list of entries.
-            for x, entry in enumerate(entry_dict):
-                # Create a new entry object.
-                new_entry = logentry.LogEntry()
-                # Initialize the entry with info from the dictionary.
-                new_entry.from_dict(entry)
-                # If the ID attribute is not blank, the entry was
-                #  successfully initialized.  Make sure the critial
-                #  fields were converted to the correct types.
-                if (
-                  type(new_entry.id) == int and type(new_entry.date) ==
-                  datetime.date and type(new_entry.time) == datetime.time and
-                  type(new_entry.datetime) == datetime.datetime and
-                  type(new_entry.duration) == datetime.timedelta):
-                    # Add the valid entry to the log object and sort lists.
-                    self.entries.append(new_entry)
-                    self.sorts[TITLE_SORT].append(
-                      (new_entry.title, new_entry.datetime, new_entry.id))
-                    self.sorts[DATE_SORT].append(
-                      (new_entry.datetime, new_entry.title, new_entry.id))
-                else:
-                    # Set error flag.
-                    flag += 1
-                    # Error message.
-                    io_utils.print_status(
-                      "error", f"Failed to create entry #{x}.", go=True,
-                      line_length=self.line_length)
-                # end if
-            # end for
+            # end if
+            # Initialize the log entry objects.
+            failed = self._init_entries(entry_dict)
             # Once all the entries have been added, sort the lists.
             self.sorts[TITLE_SORT].sort()
             self.sorts[DATE_SORT].sort()
             # Print final status.
             msg = f"{self.filename} opened.  {len(self.entries)} entries read."
-            if flag:
+            if failed:
                 msg += (
                   f"  {self.total_entries - len(self.entries)} entries " +
                   "not read.  The file may be corrupted.")
@@ -687,7 +671,8 @@ class WorkLog:
                   "have been edited outside the Work Log program.")
             io_utils.print_status(
               "Status", msg, line_length=self.line_length)
-            # Finally reset the total_entries attribute.
+            # Finally reset the total_entries attribute to the actual
+            #  number of entries added.
             self.total_entries = len(self.entries)
             return True
         except Exception as err:
@@ -696,9 +681,10 @@ class WorkLog:
     # end method
 
     def _do_save(self):
-        """-------------------------------------------------------------
-            Saves the log file (but allows the user to continue working
-             with the log object).
+        """
+            Saves the log file.
+
+            Allows the user to continue working with the log object.
 
             Arguments:  none.
 
@@ -746,9 +732,11 @@ class WorkLog:
     # end method
 
     def _do_settings(self, flag):
-        """-------------------------------------------------------------
-            Allows the user to change the date format, time format, or
-             width of the screen.
+        """
+            Allows the user to change a setting.
+
+            The date format, time format, or width of the screen can be
+             changed.
 
             Arguments:  none.
 
@@ -795,9 +783,8 @@ class WorkLog:
     # end method
 
     def _do_sort(self, entry, update=False):
-        """-------------------------------------------------------------
-            Maintains and updates the sort indexes for the entries in a
-             log object.
+        """
+            Maintains and updates the sort indexes for tasks.
 
             Arguments:
             - entry -- an entry to add or update.
@@ -845,4 +832,119 @@ class WorkLog:
             _z_exc("worklog.py/WorkLog/_do_sort", err)
         # end try
     # end method
+
+    def _init_entries(self, entry_list):
+        """
+            Initializes a set of log entries.
+
+            Takes a list of dictionaries which have been read from a
+             data file, uses them to initialize log entry objects and
+             adds the log entry objects to the work log object.
+
+            Arguments:
+            - entry_list -- the list of OrderedDicts holding the log
+               entries.
+
+            Returns:  the number of entries that could not be created.
+           -------------------------------------------------------------
+        """
+        try:
+            failed = 0
+            # Iterate through the list of entry dictionaries.
+            for x, entry in enumerate(entry_list):
+                # Try to intialize the entry.
+                if not self._init_entry(entry):
+                    # If it didn't work, increment number of failed
+                    #  entries.
+                    failed += 1
+                    # Error message.
+                    io_utils.print_status(
+                      "error", f"Failed to create entry #{x}.", go=True,
+                      line_length=self.line_length)
+                # end if
+            # end for
+            # Return number of failed entries.
+            return failed
+        except Exception as err:
+            _z_exc("worklog.py/WorkLog/_init_entries", err)
+        # end try
+    # end method
+
+    def _init_entry(self, dict_entry):
+        """
+            Initializes a log entry.
+
+            Arguments:
+            - dict_entry -- the dictionary to use to initialize the
+               entry.
+
+            Returns:  True if the entry was successfully initialized,
+             else False.
+           -------------------------------------------------------------
+        """
+        try:
+            # Create a new entry object.
+            new_entry = logentry.LogEntry()
+            # Try to initialize the entry with info from the
+            #  dictionary.
+            if new_entry.from_dict(dict_entry):
+                # If it worked, add the entry to the log object and
+                #  sort lists.
+                self.entries.append(new_entry)
+                self.sorts[TITLE_SORT].append(
+                  (new_entry.title, new_entry.datetime, new_entry.id))
+                self.sorts[DATE_SORT].append(
+                  (new_entry.datetime, new_entry.title, new_entry.id))
+                return True
+            else:
+                return False
+            # end if
+        except Exception as err:
+            _z_exc("worklog.py/WorkLog/_init_entry", err)
+        # end try
+    # end method
+
+    def _init_worklog(self, dict_entry):
+        """
+            Initializes the work log object from data from a file.
+
+            The first log entry read from a data file does not contain
+             information about a task; rather, its info attribute holds
+             data on the work log itself.
+
+            Arguments:
+            - dict_entry -- the list representation of the first log
+               entry as read from a data file.
+
+            Returns:  True if data was successfully transferred to the
+             work log object; else False.
+           -------------------------------------------------------------
+        """
+        try:
+            # Create a dummy log entry object to hold the data.
+            new_entry = logentry.LogEntry()
+            # Convert the log object information (stored in the info
+            #  field of the first entry obuject) into a dictionary.
+            new_entry.from_dict(dict_entry)
+            # Set the log object's attributes from the dictionary.
+            self.total_entries = new_entry.info["total_entries"]
+            self.show_help = new_entry.info["show_help"]
+            self.last_modified = new_entry.info["last_modified"]
+            # But only set the format attributes if the user has not
+            #  already set them.
+            if not self.date_format:
+                self.date_format = new_entry.info["date_format"]
+            # end if
+            if not self.time_format:
+                self.time_format = new_entry.info["time_format"]
+            # end if
+            return True
+        except Exception as err:
+            io_utils.print_status(
+              "Error", f"Error reading log info:  {err}",
+              line_length=self.line_length)
+            return False
+        # end try
+    # end method
+
 # end class

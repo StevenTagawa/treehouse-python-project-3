@@ -1,6 +1,5 @@
-"""---------------------------------------------------------------------
-    Contains functions to find one or more entries based on user's
-     criteria.
+"""
+    Contains functions to find entries based on user's criteria.
 
     Public Functions:
     - lookup_entry_by_id - finds an entry in the work log given its id
@@ -42,7 +41,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -94,7 +93,7 @@ BOTH = 3
 
 
 def lookup_entry_by_id(wl_obj, entry_id):
-    """-----------------------------------------------------------------
+    """
         Finds a specific entry based on the entry's ID.
 
         Arguments:
@@ -122,7 +121,7 @@ def lookup_entry_by_id(wl_obj, entry_id):
 
 
 def search_by_date(wl_obj):
-    """-----------------------------------------------------------------
+    """
         Finds work log entries based on a date/time or date/time range.
 
         Arguments:
@@ -261,7 +260,7 @@ def search_by_date(wl_obj):
 
 
 def search_by_duration(wl_obj):
-    """-----------------------------------------------------------------
+    """
         Finds work log entries based on a duration or duration range.
 
         Arguments:
@@ -334,7 +333,7 @@ def search_by_duration(wl_obj):
 
 
 def search_by_re(wl_obj):
-    """-----------------------------------------------------------------
+    """
         Finds work log entries based on a regular expression.
 
         Arguments:
@@ -398,7 +397,7 @@ def search_by_re(wl_obj):
 
 
 def search_by_text(wl_obj):
-    """-----------------------------------------------------------------
+    """
         Finds work log entries based on a text string.
 
         Arguments:
@@ -477,7 +476,7 @@ def search_by_text(wl_obj):
 
 
 def select_date(wl_obj, date_list):
-    """-----------------------------------------------------------------
+    """
         Show a list (or part of a list) of dates that contain log
          entries.
 
@@ -546,7 +545,7 @@ def select_date(wl_obj, date_list):
 
 
 def select_entry(wl_obj, entry_list):
-    """-----------------------------------------------------------------
+    """
         Allows the user to either browse a set of entries, or choose
          from a list.
 
@@ -627,7 +626,7 @@ def select_entry(wl_obj, entry_list):
 
 
 def _find_entries_date(wl_obj, start_date, end_date):
-    """-----------------------------------------------------------------
+    """
         Finds entries matching a date/time or range of date/times.
 
         Arguments:
@@ -667,7 +666,7 @@ def _find_entries_date(wl_obj, start_date, end_date):
 
 
 def _find_entries_duration(wl_obj, min_duration, max_duration):
-    """-----------------------------------------------------------------
+    """
         Finds entries matching a duration.
 
         Arguments:
@@ -704,7 +703,7 @@ def _find_entries_duration(wl_obj, min_duration, max_duration):
 
 
 def _find_entries_re(wl_obj, pattern, fields):
-    """-----------------------------------------------------------------
+    """
         Finds entries matching a regular expression.
 
         Arguments:
@@ -756,7 +755,7 @@ def _find_entries_re(wl_obj, pattern, fields):
 
 
 def _find_entries_text(wl_obj, string, fields, mode):
-    """-----------------------------------------------------------------
+    """
         Finds entries based on a text string.
 
         Arguments:
@@ -795,7 +794,7 @@ def _find_entries_text(wl_obj, string, fields, mode):
 
 
 def _get_date(wl_obj, d_type, start=None):
-    """-----------------------------------------------------------------
+    """
         Gets a date from the user.
 
         Arguments:
@@ -862,7 +861,7 @@ def _get_date(wl_obj, d_type, start=None):
 
 
 def _get_duration(wl_obj, d_type, start=None):
-    """-----------------------------------------------------------------
+    """
         Gets a duration from the user.
 
         Arguments:
@@ -930,7 +929,7 @@ def _get_duration(wl_obj, d_type, start=None):
 
 
 def _get_time(wl_obj, t_type, date, start=None):
-    """-----------------------------------------------------------------
+    """
         Gets a time from the user.
 
         Arguments:
@@ -1014,7 +1013,7 @@ def _get_time(wl_obj, t_type, date, start=None):
 
 
 def _match_item(item, entry, mode):
-    """-----------------------------------------------------------------
+    """
         Looks for a match between a query and a log entry's title,
          notes, or both.
 
@@ -1069,7 +1068,7 @@ def _match_item(item, entry, mode):
 
 
 def _parse_search_text(string, wildcard=False):
-    """-----------------------------------------------------------------
+    """
         Takes a string containing search terms and formats it for the
          search function.
 

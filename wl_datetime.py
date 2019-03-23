@@ -1,4 +1,4 @@
-"""---------------------------------------------------------------------
+"""
     Contains date- and time-related functions.
 
     Public Functions:
@@ -54,7 +54,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -88,9 +88,8 @@ except Exception as err:
 
 
 def calc_duration_abs(wl_obj, string):
-    """-----------------------------------------------------------------
-        Parses a string and determines the duration it describes, if
-         possible.
+    """
+        Parses a string and determines the duration it describes.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -205,7 +204,7 @@ def calc_duration_abs(wl_obj, string):
 
 
 def calc_duration_rel(wl_obj, end_time, start_time):
-    """-----------------------------------------------------------------
+    """
         Determines a duration based on two times.
 
         Arguments:
@@ -241,10 +240,8 @@ def calc_duration_rel(wl_obj, end_time, start_time):
 
 
 def conv_wkday(day, iso=False):
-    """-----------------------------------------------------------------
-        Converts a weekday obtained from a date object's weekday (or
-         isoweekday) method, which is Monday-based, to a Sunday-based
-         weekday.
+    """
+        Converts from Monday-based weekday to Sunday-based.
 
         Arguments:
         - day -- the weekday to convert.
@@ -276,7 +273,7 @@ def conv_wkday(day, iso=False):
 
 
 def dformat(date, endian):
-    """-----------------------------------------------------------------
+    """
         Takes a date and formats it accoring to the correct endian.
 
         Arguments:
@@ -302,9 +299,8 @@ def dformat(date, endian):
 
 
 def find_weekday(day, ordinal, month, year):
-    """-----------------------------------------------------------------
-        Determines the date of the month on which a specific day of the
-         week falls.
+    """
+        Determines the date on which a specific day of the week falls.
 
         Keyword Arguments:
         - day -- the day of the week to find.
@@ -341,7 +337,7 @@ def find_weekday(day, ordinal, month, year):
 
 
 def last_date(month, year):
-    """-----------------------------------------------------------------
+    """
         Returns the last date of a given month.
 
         Arguments:
@@ -376,9 +372,11 @@ def last_date(month, year):
 
 
 def parse_date_calendar(wl_obj, word_list):
-    """-----------------------------------------------------------------
-        Parses a word list to see if it contains a date with either
-         the month or day spelled out.
+    """
+        Parses a word list for a date.
+
+        Sees if the list contains a date with either the month or day
+         spelled out.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -436,9 +434,8 @@ def parse_date_calendar(wl_obj, word_list):
 
 
 def parse_date_input(wl_obj, string):
-    """-----------------------------------------------------------------
-        Parses input from the user which should contain a date, and
-         extracts the date.
+    """
+        Extracts a date from user input.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -465,10 +462,11 @@ def parse_date_input(wl_obj, string):
 
 
 def parse_date_numeric(wl_obj, string):
-    """-----------------------------------------------------------------
-        Function that checks to make sure a standard date entry is
-         actually a valid date, and allows the date format to be changed
-         if it isn't.
+    """
+        Validates a numeric date in the current format.
+
+        Allows the date format to be changed if the numeric combination
+         is a valid date in a different format.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -552,7 +550,7 @@ def parse_date_numeric(wl_obj, string):
 
 
 def parse_date_phrase(wl_obj, string):
-    """-----------------------------------------------------------------
+    """
         Function that checks a string to see if it contains a valid word
          date.
 
@@ -684,10 +682,8 @@ def parse_date_phrase(wl_obj, string):
 
 
 def parse_duration_input(wl_obj, entry, string):
-    """-----------------------------------------------------------------
-        Function that checks a string to see if it contains a valid
-         duration or end time, and calculates the duration from an end
-         time if necessary.
+    """
+        Extracts a duration from user input.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -715,10 +711,8 @@ def parse_duration_input(wl_obj, entry, string):
 
 
 def parse_time_input(wl_obj, string):
-    """-----------------------------------------------------------------
-        Function that preprocesses a string which is supposed to contain
-         a valid time, and passes the input to a validator function
-         which will create a time object from it if possible.
+    """
+        Extracts a time from user input.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -789,9 +783,8 @@ def parse_time_input(wl_obj, string):
 
 
 def set_endian(wl_obj):
-    """-----------------------------------------------------------------
-        Function which asks the user to set the format for dates to be
-         entered and displayed.
+    """
+        Allows the user to set the preferred date format.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -839,9 +832,8 @@ def set_endian(wl_obj):
 
 
 def set_time_format(wl_obj):
-    """-----------------------------------------------------------------
-        Function which asks the user to set the format for times to be
-         entered and displayed.
+    """
+        Allows the user to set the preferred time format.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -883,9 +875,8 @@ def set_time_format(wl_obj):
 
 
 def _check_calendar_date(month, day, year=None):
-    """-----------------------------------------------------------------
-        Checks two or three words to see if they form a valid calendar
-         date.
+    """
+        Checks two or three words to see if they form a valid date.
 
         Arguments:
         - month -- the word representing the month.
@@ -932,9 +923,8 @@ def _check_calendar_date(month, day, year=None):
 
 
 def _check_other_endians(numbers, endian):
-    """-----------------------------------------------------------------
-        Checks the validity of a potential date against the two formats
-         which are NOT currently selected.
+    """
+        Validates a date in formats NOT currently preferred.
 
         Arguments:
         - numbers -- the numbers that form the potential date.
@@ -968,9 +958,8 @@ def _check_other_endians(numbers, endian):
 
 
 def _create_date(numbers, endian):
-    """-----------------------------------------------------------------
-        Helper function that tries to create a date from a set of
-         numbers.
+    """
+        Creates a date from a set of numbers.
 
         Arguments:
         - numbers -- the numbers that form the potential date.
@@ -1018,8 +1007,8 @@ def _create_date(numbers, endian):
 
 
 def _create_date_from_weekday(weekday, offset):
-    """-----------------------------------------------------------------
-        Helper function which creates a date given a day of the week.
+    """
+        Creates a date given a day of the week.
 
         Arguments:
         - weekday -- the day of the week for which to create the date.
@@ -1053,9 +1042,8 @@ def _create_date_from_weekday(weekday, offset):
 
 
 def _create_time(wl_obj, num_list, pm):
-    """-----------------------------------------------------------------
-        Helper function which takes a list of "words" which may or may
-         not contain a valid time and attempts to interpret it.
+    """
+        Creates a time from a list of words.
 
         Arguments:
         - wl_obj -- the work log object.

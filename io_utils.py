@@ -1,4 +1,4 @@
-"""---------------------------------------------------------------------
+"""
     Contains i/o-related functions.
 
     Public Functions:
@@ -25,6 +25,7 @@
 
     Private Functions:
     - _menu_build_display_list -- builds the list for a menu.
+    - _menu_build_prompt -- builds the prompt for a menu.
     - _menu_display -- displays a menu.
     - _menu_evaluate_response -- checks the response to a menu.
     - menu_get_response -- gets a response to a menu.
@@ -38,7 +39,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -72,7 +73,7 @@ except Exception as err:
 
 
 def build_dict_string(dic):
-    """-----------------------------------------------------------------
+    """
         Builds and returns a string representation of a dictionary.
 
         Arguments:
@@ -110,7 +111,7 @@ def build_dict_string(dic):
 
 
 def clear_screen():
-    """-----------------------------------------------------------------
+    """
         Clears the screen.
 
         Arguments:  None.
@@ -133,7 +134,7 @@ def clear_screen():
 
 
 def del_from_list(lst, condition, index=None, attr=None):
-    """-----------------------------------------------------------------
+    """
         Deletes all items in a list that meet a condition.
 
         Arguments:
@@ -174,7 +175,7 @@ def del_from_list(lst, condition, index=None, attr=None):
 
 
 def confirm(prompt, line_length=80):
-    """-----------------------------------------------------------------
+    """
         Asks the user to confirm a decision.
 
         Arguments:
@@ -219,9 +220,8 @@ def confirm(prompt, line_length=80):
 
 
 def file_create(filetype="txt", line_length=80):
-    """-----------------------------------------------------------------
-        Creates a new file to store data.  Offers to overwrite an
-         existing file.
+    """
+        Creates a new file/overwrites an existing file to store data.
 
         Keyword Arguments:
         - filetype -- the type of file to create (default "txt").
@@ -324,7 +324,7 @@ def file_create(filetype="txt", line_length=80):
 
 
 def file_read(fname, filetype="txt", line_length=80):
-    """-----------------------------------------------------------------
+    """
         Opens and reads a file.
 
         Arguments:
@@ -369,7 +369,7 @@ def file_read(fname, filetype="txt", line_length=80):
 
 
 def file_write(fname, filetype, data_list, fieldnames=None, line_length=80):
-    """-----------------------------------------------------------------
+    """
         Opens a file and writes data to it.
 
         Arguments:
@@ -411,10 +411,11 @@ def file_write(fname, filetype, data_list, fieldnames=None, line_length=80):
 
 
 def get_filename_open(filetype, line_length=80):
-    """-----------------------------------------------------------------
-        Gets the name of a file to open.  On request, displays a list of
-         files in the working directory and allows the user to choose
-         one.
+    """
+        Gets the name of a file to open.
+
+        On request, displays a list of files in the working directory
+         and allows the user to choose one.
 
         Arguments:
         - filetype -- extension of the file to open.
@@ -510,8 +511,8 @@ def get_filename_open(filetype, line_length=80):
 
 
 def get_input(prompt, typ="str", must_respond=True, line_length=80):
-    """-----------------------------------------------------------------
-        Prompts for input from the user.
+    """
+        Prompts for and gathers input from the user.
 
         Arguments:
         - prompt -- the prompt to display (default ">>").
@@ -581,7 +582,7 @@ def get_input(prompt, typ="str", must_respond=True, line_length=80):
 
 
 def goodbye_screen(project_name, line_length=80):
-    """-----------------------------------------------------------------
+    """
         Prints a thank you message.
 
         Arguments:
@@ -634,7 +635,7 @@ def menu(
   col_dir="down", validate_all=False, show_help=False, help_text="",
   top_level=False, prompt="", quit_=True, nav=False, prev=False, nxt=False,
   header="", help_toggle=False, line_length=80):
-    """-------------------------------------------------------------
+    """
         Presents a menu and obtains a response from the user.
 
         Arguments:
@@ -701,7 +702,7 @@ def menu(
           the user's choices.
          if nav is True and the user so enters, "-p" or "-n";
          if help_toggle is True and the user so enters, "-h".
-       -------------------------------------------------------------
+       -----------------------------------------------------------------
     """
     try:
         # Make sure the column argument is valid.
@@ -712,6 +713,8 @@ def menu(
         if keystroke_list != "#":
             nav = False
         # end if
+        # Build the menu prompt.
+        prompt = _menu_build_prompt(prompt, multiple, option_type)
         # Build the menu display.
         display_list = _menu_build_display_list(
           options, option_type, prompt, keystroke, keystroke_list, line_length,
@@ -742,7 +745,7 @@ def menu(
 
 
 def print_block(string, line_length=80, lf=True, ret_str=False):
-    """-----------------------------------------------------------------
+    """
         Takes a long string and prints it within a specified width.
 
         Arguments:
@@ -845,7 +848,7 @@ def print_block(string, line_length=80, lf=True, ret_str=False):
 
 
 def print_status(msg_type, msg, go=False, line_length=80):
-    """-----------------------------------------------------------------
+    """
         Prints a status or error message, optionally waits for the user
          to press [ENTER] to continue.
 
@@ -909,7 +912,7 @@ def print_status(msg_type, msg, go=False, line_length=80):
 
 
 def welcome_screen(project_no, project_name, line_length):
-    """-----------------------------------------------------------------
+    """
         Clears the screen and prints introductory text.
 
         Arguments:
@@ -961,7 +964,7 @@ def welcome_screen(project_no, project_name, line_length):
 
 
 def yes_no(prompt, clear=False, quit_=False, line_length=80):
-    """-----------------------------------------------------------------
+    """
         Prompts the user to answer a yes or no question.
 
         Arguments:
@@ -1035,7 +1038,7 @@ def yes_no(prompt, clear=False, quit_=False, line_length=80):
 def _menu_build_display_list(
   options, option_type, prompt, keystroke, keystroke_list, line_length,
   multiple, quit_, top_level, header):
-    """-----------------------------------------------------------------
+    """
         Builds the contents of a menu.
 
         Arguments:
@@ -1056,14 +1059,6 @@ def _menu_build_display_list(
        -----------------------------------------------------------------
     """
     try:
-            # Create a generic prompt if one hasn't been provided.
-        if not prompt:
-            pr_str = "Please select one "
-            if multiple:
-                pr_str += "or more "
-            # end if
-            prompt = pr_str + "of the following " + option_type + ":"
-        # end if
         display_list = []
         # TODO:  Implement help screen.
         #
@@ -1126,9 +1121,36 @@ def _menu_build_display_list(
 # end function
 
 
+def _menu_build_prompt(prompt, multiple, option_type):
+    """
+        Builds a menu prompt.
+
+        Arguments:
+        - prompt -- the prompt to display.
+        - multiple -- whether multiple responses are permitted.
+        - option_type -- a word or phrase describing the options.
+
+        Returns:  the final prompt.
+       -----------------------------------------------------------------
+    """
+    try:
+        if prompt == "":
+            prompt = "Please select one "
+            if multiple:
+                prompt += "or more "
+            # end if
+            prompt += "of the following " + option_type + ":"
+        # end if
+        return prompt
+    except Exception as err:
+        _z_exc("io_utils.py/_menu_build_prompt", err)
+    # end try
+# end function
+
+
 def _menu_display(
   display_list, prompt, lines, multiple, nav, prev, nxt, line_length):
-    """-----------------------------------------------------------------
+    """
         Displays a menu.
 
         Arguments:
@@ -1196,7 +1218,7 @@ def _menu_display(
 def _menu_evaluate_response(
   response_list, options, keystroke, keystroke_list, multiple, validate_all,
   match_case, quit_, nav, help_toggle, line_length):
-    """-----------------------------------------------------------------
+    """
         Evaluates the response to a menu.
 
         Arguments:
@@ -1391,7 +1413,7 @@ def _menu_evaluate_response(
 
 
 def _menu_get_response(line_length):
-    """-----------------------------------------------------------------
+    """
         Gets a user's response to a menu.
 
         Arguments:

@@ -1,4 +1,4 @@
-"""---------------------------------------------------------------------
+"""
     Handles various resources specific to the work log object.
 
     Public Functions:
@@ -36,7 +36,7 @@ import sys
 
 
 def _z_exc(loc, err):
-    """-----------------------------------------------------------------
+    """
         Catch-all exception handler.
 
         Arguments:
@@ -95,7 +95,7 @@ DAYS = [
 
 
 def cardinal(string):
-    """-----------------------------------------------------------------
+    """
         Takes a single word, and if it is a numeric string or number
          word, returns the integer that it represents.
 
@@ -156,7 +156,7 @@ def cardinal(string):
 
 
 def format_recurrance_pattern(wl_obj, entry, part=False):
-    """-----------------------------------------------------------------
+    """
         Parses the rec_interval attribute of a log entry object.
 
         Arguments:
@@ -278,9 +278,8 @@ def format_recurrance_pattern(wl_obj, entry, part=False):
 
 
 def format_string(wl_obj, obj, short=False):
-    """-------------------------------------------------------------
-        Takes an object representable by a string and returns a
-         formatted string.
+    """
+        Formats the string representation of an object.
 
         Arguments:
         - wl_obj -- the work log object.
@@ -290,7 +289,7 @@ def format_string(wl_obj, obj, short=False):
         - short -- format date objects in short form (default False).
 
         Returns:  a string.
-       -------------------------------------------------------------
+       -----------------------------------------------------------------
     """
     try:
         # If obj is already a string, just return it.
@@ -390,10 +389,8 @@ def format_string(wl_obj, obj, short=False):
 
 
 def month(string):
-    """-----------------------------------------------------------------
-        Takes a word, checks to see if it is the name of a month, and
-         if it is, returns an integer (January = 1, December = 12)
-         representing that month.
+    """
+        Converts an integer to a month name.
 
         Arguments:
         - string -- the word to parse.
@@ -424,9 +421,7 @@ def month(string):
 
 def numbers(string):
     """-----------------------------------------------------------------
-        Takes a string, looks through it for any number or word
-         combinations that represent whole numbers or fractions and
-         converts them to integers or floats.
+        Converts a number name/phrase to an integer or float.
 
         Arguments:
         - string -- the word to parse.
@@ -486,10 +481,8 @@ def numbers(string):
 
 
 def ordinal(string):
-    """-----------------------------------------------------------------
-        Takes a word, checks to see if it the name of an ordinal day of
-         of the month, and if it is, returns an integer corresponding to
-         the day.
+    """
+        Converts an ordinal word to an integer.
 
         Arguments:
         - string -- the word to parse.
@@ -514,8 +507,8 @@ def ordinal(string):
 
 
 def ordinal_string(number, long=False):
-    """-----------------------------------------------------------------
-        Takes an integer and returns its abbreviated ordinal form.
+    """
+        Convert an integer to an abbreviated ordinal.
 
         Arguments:
         - number -- the number to convert.
@@ -567,7 +560,7 @@ def ordinal_string(number, long=False):
 
 
 def print_header(wl_obj):
-    """-----------------------------------------------------------------
+    """
         Clears the screen and prints the program header.
 
         Arguments:
@@ -629,7 +622,7 @@ def print_header(wl_obj):
 
 
 def print_nav(q=False, b=False):
-    """-----------------------------------------------------------------
+    """
         Tells the user how to quit or go back.
 
         Keyword arguments:
@@ -656,7 +649,7 @@ def print_nav(q=False, b=False):
 
 
 def set_screen_width(wl_obj):
-    """-----------------------------------------------------------------
+    """
         Resets the width of the screen in characters.
 
         Arguments:
@@ -704,10 +697,8 @@ def set_screen_width(wl_obj):
 
 
 def weekday(string):
-    """-----------------------------------------------------------------
-        Takes a word, checks to see if it is the name of a day of the
-         week, and if it is, returns an integer (Sunday = 1, Saturday =
-         7) representing that day.
+    """
+        Converts a day name to an integer (Sunday-based).
 
         Arguments:
         - string -- the word to parse.
@@ -738,9 +729,8 @@ def weekday(string):
 
 
 def _normalize_date_list(d_list):
-    """-----------------------------------------------------------------
-        Takes a list of integers representing dates, both absolute and
-         relative, and converts them into plain-English equivalents.
+    """
+        Converts a list of date integers to ordinals.
 
         Arguments:
         - d_list -- the list of integers to convert.
