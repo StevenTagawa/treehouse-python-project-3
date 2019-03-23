@@ -5,6 +5,9 @@ This repository contains all of the code files associated with Project #3 for th
 Techdegree, plus a sample test.csv file which can be used with the script.  The main script is in
 the file worklog_runme.py.
 
+With the exception of the test .csv files, ALL files in the repository are required for the script to
+run, including help.txt.
+
 CAUTION!!!  This script uses Comma Separated Value (.csv) files to store data.  DO NOT SAVE A WORK
 LOG CSV FILE USING EXCEL OR ANY OTHER PROGRAM EXCEPT NOTEPAD OR ANOTHER BASIC TEXT EDITOR!!!  The
 strings representing dates and times are stored in a specific format, which Excel or other spreadsheet
