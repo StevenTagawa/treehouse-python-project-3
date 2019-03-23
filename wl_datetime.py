@@ -799,25 +799,32 @@ def set_endian(wl_obj):
           "2010 July 15 (10/7/15)"]
         # Print explanation.
         if wl_obj.date_format:
-            prompt = "The current date format is "
+            msg = "The current date format is "
             if wl_obj.date_format == "M":
-                prompt += end_list[0]
+                msg += end_list[0]
             elif wl_obj.date_format == "L":
-                prompt += end_list[1]
+                msg += end_list[1]
             else:  # wl_obj.date_format == "B"
-                prompt += end_list[2]
+                msg += end_list[2]
             # end if
         else:
-            prompt = "The date format has not been set."
+            msg = "The date format has not been set."
         # end if
         io_utils.print_status(
-          "Status", prompt, go=True, line_length=wl_obj.line_length)
-        # Set the list of date format to choose from.
-        # Get the user to pick one.
+          "Status", msg, go=True, line_length=wl_obj.line_length)
+        # If a date format is already set, allow the user to leave it.
+        if wl_obj.date_format:
+            q = True
+        else:
+            q = False
+        # end if
+        # Ask the user to set a date format.
         response = io_utils.menu(
-          end_list, keystroke_list="#", confirm=True, quit_=False,
+          end_list, keystroke_list="#", confirm=True, quit_=q,
           prompt="Please select your preferred date format:")
-        if response == 1:
+        if response == 0:
+            return
+        elif response == 1:
             wl_obj.date_format = "M"
         elif response == 2:
             wl_obj.date_format = "L"
@@ -853,9 +860,9 @@ def set_time_format(wl_obj):
         # Print status.
         io_utils.print_status(
           "Status", msg, go=True, line_length=wl_obj.line_length)
-        # Display menu and get response.\
+        # Display menu and get response.
         response = io_utils.menu(
-          ["12-hour clock (am/pm)", "24-hour clock (military time)"],
+          ["12-hour Clock (am/pm)", "24-hour Clock (Military Time)"],
           keystroke_list="#")
         # If the user chose to quit, just return without changing
         #  anything.

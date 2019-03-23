@@ -152,7 +152,7 @@ class LogEntry:
             #  values in the dictionary entry.  Type conversions need to
             #  be done for non-string attributes.
             for key in dict_entry:
-                dict_entry[key] = self._convert_dict_key(key)
+                dict_entry[key] = self._convert_dict_key(dict_entry[key])
             # end for
             # Go through the attributes and set them.
             if self._validate_dict_entry(dict_entry) or self.info is not None:

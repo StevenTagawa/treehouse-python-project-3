@@ -669,13 +669,16 @@ def set_screen_width(wl_obj):
           go=True, line_length=wl_obj.line_length)
         msg = (
           "Please enter your desired screen width (must be at least 40 " +
-          "characters):")
+          "characters), or press [ENTER] to go back:")
         # Loop until user enters a valid length or quits.
         while True:
             # Get the new line length (must be >= 40).
             response = io_utils.get_input(
               msg, typ="int", line_length=wl_obj.line_length)
-            if (response is None) or (response < 40):
+            # If the user quits, leave line_length unchanged.
+            if (response is None):
+                return
+            elif (response < 40):
                 io_utils.print_status(
                   "Error", "You did not enter a valid number.",
                   line_length=wl_obj.line_length)
