@@ -1,0 +1,103 @@
+﻿THIS IS THE HELP TEXT FILE FOR THE WORK LOG SCRIPT.
+_ah_title, 3
+ A task must have a title.¤
+The title can contain any characters.¤
+The title does not have to be unique.
+_ah_date, 15
+ Dates can be entered--¤
+With numbers and dashes, slashes or dots, with 2 or 4 numbers for the
+year:  [7-15-12], [11/9/10], [5.15.2018].¤
+As a day relative to today:  [today], [yesterday], [tomorrow], [day
+before yesterday], [day after tomorrow].¤
+(Extra words like "the" and "of" are ignored.)¤
+As a day of the week in the current week:  [Monday], [wed], [sa].¤
+As a day of the week from two weeks prior to two weeks following:
+[monday after next], [next Fri], [last We], [Sat before last]¤
+If a date is not valid in the selected format, the program
+will check to see if it is valid in a different format, and if it is,
+the program will ask if you want to change the date format to match.¤
+When creating an entry, pressing [ENTER] will default to today.  When
+editing an entry, pressing [ENTER] will leave the original date
+unchanged.
+_ah_time, 8
+ Times can be entered using--¤
+Numbers with or without a colon:  [15:30], [921]).¤
+All valid number words will be converted to numerals:  [2 ten p.m.],
+[eleven 55am].¤
+All times between 1:00 and 12:59 are assumed to be a.m.
+unless p.m. is specified.¤
+Minutes can be entered using "after", "til"/"until" or "half":
+[15 til three p.m.], [ten after 3a], [half 11 pm]).
+_ah_duration, 8
+ Duration can be entered--¤
+Directly in minutes, hours, and/or days:  [15 minutes], [one and a half
+hours], [one day, 15 hours, 27 minutes]).¤
+Or as an ending time.  If an ending time is entered,
+the start time will be subtracted from it to determine the task's
+duration.¤
+Zero minutes is a valid duration, so the start and end times can be the
+same.)
+_ah_note, 1
+ Adding a note for a task is optional.  Any text can be a note.
+_ah_recurrance1, 10
+ A task can be set to recur at regular intervals for a period of time.
+The interval can be based on one or more days of the week (for example,
+every other Saturday, every other Tuesday and Thursday), on days during
+the month (such as the 2nd Saturday, or the 1st, 3rd and 4th Monday and
+Friday) or on dates (the 1st and the 15th, or the 22nd, or the next to
+the last day of the month).  A task set to recur based on days or dates
+in a month can be set to skip months (such as the 10th of every third
+month).¤
+See the User Manual (available from the main menu) for a detailed
+walkthough of recurrance-setting.
+_ah_recurrance2, 3
+ If you would like this task to recur at regular intervals (once per day,
+week or month), please select that interval below.  If you would like
+this task to repeat at any other interval, select [Other].
+_ah_recurrance3, 5
+ If you want the task to recur on one or more specific days of the week
+(for example, on Tuesdays, or on Wednesdays and Saturdays), select "days
+of the week".  If you want the task to recur on one ore more specific
+days of the month (for example, on the 5th, or on the 13th and 28th, or
+on the 2nd Tuesday or 4th Friday), select [days of the month].
+_ah_recurrance4, 4
+Enter the date or dates of the month on which you want the task to
+recur, separated by commas.  To count backwards from the end of the
+month, enter negative numbers:  -1 for the last day of the month, -2 for
+the next to the last day, and so on.
+_sh_text, 13
+ Enter one or more words or phrases to search for.  To search for an
+exact phrase, enclose it in quote marks.  All searches are OR-based
+unless specified otherwise.  All searches are case-insensitive.  Use [+]
+or the word "and" to make a search (or part of a search) AND-based.  You
+can (but do not need to) use [|] or the word "or" to explicitly make a
+search OR-based.  You can also use parentheses to group parts of a search.¤
+Wildcards:  use [?] for a single character and [*] for any number of
+characters.¤
+NOTE:  You can also search for question marks and asterisks as literal
+character, rather than as wildcards.¤
+See the User Manual (available from the main menu) for a complete
+explanation of the program's search capabilities, including examples of
+all variations.
+_sh_re, 8
+ WARNING:  This option should be used only by users who are familiar with
+the format of regular expressions.  Other than ensuring that it is
+compilable, the program will make no attempt to validate the expression.
+Do not use quotation marks when entering an expression.¤
+NOTE:  Searches using regular expressions are CASE-SENSITIVE unless
+specified otherwise.  Append [, re.I] to the end of your expression to
+make the search case-insensitive.  (No other regular expression flags
+are meaningful for this program.)
+_eh_edit, 6
+ The title, date, time, duration, and notes for a task can be edited.
+Note that changes are not made until the edited entry is saved, and the
+log file must be saved for changes to become permanent.  If the task
+being edited is one occurrance in a series, any changes (except to the
+date) can be applied to either the occurrance being edited, or to the
+entire series.
+_xh_settings, 5
+ You can set the format for dates to American (M/D/Y), European (D/M/Y)
+or Asian (Y/M/D) here.  You can also set the format for times to either a
+12- or 24-hour clock.  Finally, you can set the width of the screen,
+which defaults to 80 characters.  You can make the screen as narrow as
+40 characters, or as wide as you would like.

@@ -107,6 +107,10 @@ def browse_entries(wl_obj, entry_list, ndx=0):
     try:
         # Loop.
         while True:
+            # If the list is empty, automatically return.
+            if len(entry_list) == 0:
+                return entry_list
+            # end if
             # Clear the screen.
             wl_resource.print_header(wl_obj)
             # Print status message.
@@ -193,6 +197,11 @@ def browse_list(wl_obj, browse_list, start=0):
        -----------------------------------------------------------------
     """
     try:
+        # If the list is empty, automatically return as if the user had
+        #  quit.
+        if len(browse_list) == 0:
+            return 0
+        # end if
         # Clear the screen and print the matches to be listed.
         wl_resource.print_header(wl_obj)
         if len(browse_list) == 1:

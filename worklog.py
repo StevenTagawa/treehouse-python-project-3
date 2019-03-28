@@ -44,6 +44,7 @@ try:
     import wl_add
     import wl_datetime
     import wl_help
+    import wl_manual
     import wl_resource
     import wl_search
 except Exception as err:
@@ -175,9 +176,10 @@ class WorkLog:
             # If the total_entries attribute is -1, the object is not
             #  initialized.  Ask the user to open or create a log file.
             if self.total_entries == -1:
-                keystroke_list = ["O", "N", "X"]
+                keystroke_list = ["O", "N", "X", "M"]
                 action = io_utils.menu(
-                  ["Open log file", "New log file", "Settings"],
+                  ["Open Log File", "New Log File", "Change Settings",
+                   "Read User Manual"],
                   option_type="actions", keystroke=True,
                   keystroke_list=keystroke_list, lines=True,
                   top_level=True, line_length=self.line_length)
@@ -201,8 +203,8 @@ class WorkLog:
             wl_resource.print_header(self)
             keystroke_list = ["A", "F", "S", "C", "X"]
             action = io_utils.menu(
-              ["Add entries", "Find/edit/delete entries", "Save log file",
-               "Close log file", "Change Settings"], option_type="actions",
+              ["Add Entries", "Find/Edit/Delete Entries", "Save Log File",
+               "Close Log File", "Change Settings"], option_type="actions",
               lines=True, keystroke=True, keystroke_list=keystroke_list,
               top_level=True, line_length=self.line_length)
             # If the user chose to quit...
@@ -287,6 +289,10 @@ class WorkLog:
             # If the user wants to access the settings menu...
             elif self.action == "X":
                 self._do_settings(self.total_entries)
+            # If the user wants to read the user manual...
+            elif self.action == "M":
+                input(wl_manual.string)
+                io_utils.clear_screen
             # end if
             # To go back to the actions menu, return True.
             return True
@@ -316,6 +322,7 @@ class WorkLog:
             #  want.
             not_done = True
             while not_done:
+                cancel = False
                 # First, create a new log entry object.
                 new_entry = logentry.LogEntry()
                 # Go through the list and set values for each attribute.
@@ -382,16 +389,21 @@ class WorkLog:
                           line_length=self.line_length)
                         # If the user aborts and does not want to start
                         #  another task, return immediately.
-                        if not io_utils.yes_no(
+                        if io_utils.yes_no(
                           "Do you want to add another task?",
                           line_length=self.line_length):
+                            cancel = True
+                            break
+                        else:
                             return
                         # end if
                     else:
                         attrib += go
                     # end if
                 # end while
-                not_done = self._add_entry(new_entry, recurring_entries)
+                if not cancel:
+                    not_done = self._add_entry(new_entry, recurring_entries)
+                # end if
             # end while
             return
         except Exception as err:
@@ -505,7 +517,7 @@ class WorkLog:
             if self.changed and io_utils.yes_no(
               f"{self.filename} has changed.  Do you want to save it?",
               line_length=self.line_length):
-                if not self._do_save(self):
+                if not self._do_save():
                     io_utils.print_status(
                       "Error", "Error saving file.",
                       line_length=self.line_length)

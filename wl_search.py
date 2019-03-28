@@ -1036,14 +1036,17 @@ def _match_item(item, entry, mode):
                 match_list[ndx] = _match_item(subitem, entry, mode)
             # Search the fields indicated.
             else:
+                # Compile the term into a regex pattern which will match
+                #  only a word in the field.
+                term = re.compile(subitem + r"(?=\s|$)", re.I)
+                # Then compare the search term to the appropriate
+                #  field(s).
                 if (
-                  ((mode == TITLE) and
-                   re.search(subitem, entry.title, re.I)) or
-                  ((mode == NOTES) and
-                   re.search(subitem, entry.notes, re.I)) or
+                  ((mode == TITLE) and re.search(term, entry.title)) or
+                  ((mode == NOTES) and re.search(term, entry.notes)) or
                   ((mode == BOTH) and
-                   (re.search(subitem, entry.title, re.I) or
-                   re.search(subitem, entry.notes, re.I)))):
+                   (re.search(term, entry.title) or
+                   re.search(term, entry.notes)))):
                     match_list[ndx] = True
                 else:
                     match_list[ndx] = False
@@ -1090,8 +1093,8 @@ def _parse_search_text(string, wildcard=False):
         # If searching with wildcards, convert any wildcard characters
         #  in the string to their regex equivalents.
         if wildcard:
-            string = string.replace("?", "\\w")
-            string = string.replace("*", "\\w*")
+            string = string.replace("?", "\\S")
+            string = string.replace("*", "\\S+")
         # If NOT searching with wildcards, make sure any wildcard
         #  characters are escaped, so that they are searched for
         #  literally.

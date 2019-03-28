@@ -238,7 +238,7 @@ def file_create(filetype="txt", line_length=80):
         while not fname:
             fname = get_input(
               prompt="Please enter a name for the new file (press [ENTER] " +
-              "to go back).\n")
+              "to go back).\n", must_respond=False)
             if not fname:
                 # If the user entered nothing, ask if they want to go
                 #  back.
@@ -265,10 +265,10 @@ def file_create(filetype="txt", line_length=80):
                       "Warning", f"{fname} already exists.", go=True,
                       line_length=line_length)
                     choice = menu(
-                            ["Open this file.", "Replace this file",
-                             "Create a new file with a different name"],
-                            confirm=True, keystroke=True,
-                            keystroke_list=["O", "R", "C"], lines=True)
+                      ["Open this file.", "Replace this file",
+                       "Create a new file with a different name"],
+                      confirm=True, keystroke=True,
+                      keystroke_list=["O", "R", "C"], lines=True)
                     # If the user chose to quit, return an empty string.
                     if choice == 0:
                         return "", False
@@ -1188,7 +1188,7 @@ def _menu_display(
             print()
         # end if
         for n, option in enumerate(display_list):
-            if lines or (n == len(display_list) - 1):
+            if lines or (n >= len(display_list) - 2):
                 print(option)
             else:
                 print(option, end=", ")
@@ -1201,7 +1201,7 @@ def _menu_display(
         if nav and (prev or nxt):
             print()
             if prev:
-                print("[P] Previous  ", end="")
+                print("[P] Previous, ", end="")
             # end if
             if nxt:
                 print("[N] Next", end="")

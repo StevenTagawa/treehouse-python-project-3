@@ -760,8 +760,8 @@ def _normalize_date_list(d_list):
                     rel_list.append("next to the last day")
                 else:
                     rel_list.append(
-                      wl_resource.ordinal_string(abs(date) - 1) +
-                      "to the last day")
+                      wl_resource.ordinal_string(abs(date)) +
+                      " to the last day")
                 # end if
             # end if
         # end for

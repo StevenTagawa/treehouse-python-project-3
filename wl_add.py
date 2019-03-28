@@ -12,6 +12,8 @@
     - add_title -- sets the log entry object's title attribute.
 
     Private Functions:
+    - _check_dates_input -- tries to convert the input from _get_dates
+        to integers.
     - _find_recurrances -- sets the interval or conditions that a task
        will recur.
     - _get_dates -- gets a list of integers from the user, representing
@@ -571,6 +573,55 @@ def add_title(wl_obj, entry, edit=False):
 # end function
 
 
+def _check_dates_input(string):
+    """
+        Tries to convert input from _get_dates into an integer.
+
+        Arguments:
+        - string -- the string to check.
+
+        Returns:  an integer if successful, else None.
+       -----------------------------------------------------------------
+    """
+    try:
+        # First try a simple type conversion.
+        try:
+            return int(string)
+        except Exception:
+            pass
+        # end try
+        # Next, see if it's a number word.
+        ret_int = wl_resource.cardinal(string)
+        if type(ret_int) == int:
+            return ret_int
+        # end if
+        # Next, see if it's an ordinal word.
+        ret_int = wl_resource.ordinal(string)
+        if ret_int:
+            return ret_int
+        # end if
+        # Finally, check to see if it's a phrase relative to the end of
+        #  the month.
+        if re.search(r"day( of the month)?$", string, re.I):
+            if re.match(r"last", string, re.I):
+                return -1
+            elif re.match(r"(next)", string, re.I):
+                return -2
+            else:
+                ret_int = wl_resource.ordinal(re.match(r"\S+", string).group())
+                if ret_int:
+                    return ret_int * -1
+                # end if
+            # end if
+        # end if
+        # If nothing worked, return None.
+        return None
+    except Exception as err:
+        _z_exc("wl_add.py/_check_dates_input", err)
+    # end try
+# end function
+
+
 def _find_recurrances(wl_obj, entry):
     """
         Allows the user to input how frequently a task will recur.
@@ -637,7 +688,7 @@ def _find_recurrances(wl_obj, entry):
                     prompt = (
                       "Select the day(s) that you want this task to recur:")
                     days = io_utils.menu(
-                      wl_resource.days[1:], keystroke_list="#", multiple=True,
+                      wl_resource.DAYS[1:], keystroke_list="#", multiple=True,
                       prompt=prompt, line_length=wl_obj.line_length)
                     # If the user aborts, loop back.
                     if days == 0:
@@ -645,7 +696,7 @@ def _find_recurrances(wl_obj, entry):
                     # end if
                     day_list = []
                     for day in days:
-                        day_list.append(wl_resource.days[day])
+                        day_list.append(wl_resource.DAYS[day])
                     # end for
                     day_list = str_utils.comma_str_from_list(day_list)
                     prompt = (
@@ -667,7 +718,7 @@ def _find_recurrances(wl_obj, entry):
                           "interval between recurrances is 30 weeks.")
                         good = False
                         while not good:
-                            skip = io_utils.get_input(prompt, typ=int)
+                            skip = io_utils.get_input(prompt, typ="int")
                             if not (0 <= skip < 31):
                                 msg = (
                                   "Sorry, the number of weeks between " +
@@ -728,7 +779,7 @@ def _find_recurrances(wl_obj, entry):
                           "Select the day(s) that you want this task to " +
                           "recur")
                         days = io_utils.menu(
-                          wl_resource.days[1:], keystroke_list="#",
+                          wl_resource.DAYS[1:], keystroke_list="#",
                           multiple=True, prompt=prompt,
                           line_length=wl_obj.line_length)
                         # If the user aborts, loop back.
@@ -737,7 +788,7 @@ def _find_recurrances(wl_obj, entry):
                         # end if
                         day_list = []
                         for day in days:
-                            day_list.append(wl_resource.days[day])
+                            day_list.append(wl_resource.DAYS[day])
                         # end for
                         day_list = str_utils.comma_str_from_list(day_list)
                         # Then select the weeks.
@@ -790,8 +841,17 @@ def _get_dates(wl_obj):
         while not valid:
             # Get a response from the user (string)
             response = io_utils.get_input("Enter one or more dates:")
-            dates = re.findall(r"-?\d+", response)
-            # If the user didn't enter any dates, ask to retry or quit.
+            word_list = re.split(r",\s*", response)
+            # Check each element to see if it's a number or ordinal.
+            dates = []
+            for word in word_list:
+                word = _check_dates_input(word)
+                if word:
+                    dates.append(word)
+                # end if
+            # end for
+            # If there isn't anything recognizable, print an error
+            #  message.
             if len(dates) == 0:
                 io_utils.print_status(
                   "Error", "You did not any recognizable dates.",
@@ -963,12 +1023,17 @@ def _set_occurrances(wl_obj, entry):
             valid = False
             while not valid:
                 end_date = io_utils.get_input(
-                  "Please enter the last date for this task:")
-                end_date = wl_datetime.parse_date_input(wl_obj, end_date)
+                  "Please enter the last date for this task:",
+                  must_respond=False)
+                # Parse the input only if there is any, else drop
+                #  through.
+                if end_date:
+                    end_date = wl_datetime.parse_date_input(wl_obj, end_date)
+                # end if
                 if not end_date:
                     io_utils.print_status(
                       "Error", "You did not enter a valid last date.",
-                      line_length=wl_obj.line_length)
+                      go=True, line_length=wl_obj.line_length)
                     go = io_utils.yes_no(
                       "Do you want to try again?",
                       line_length=wl_obj.line_length)

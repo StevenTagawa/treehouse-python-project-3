@@ -491,9 +491,9 @@ def parse_date_numeric(wl_obj, string):
         #  inserted depends on the format.
         if len(numbers) == 2:
             if wl_obj.date_format == "B":
-                numbers.insert(0, datetime.date.today().year())
+                numbers.insert(0, datetime.date.today().year)
             else:
-                numbers.append(datetime.date.today().year())
+                numbers.append(datetime.date.today().year)
             # end if
         # end if
         # Now try to create a date object with the selected format.
@@ -722,20 +722,31 @@ def parse_time_input(wl_obj, string):
        -----------------------------------------------------------------
     """
     try:
+        # am/pm regex.
+        ampm = re.compile(r"\s?(a|p)?\.?m?\.?$", re.I)
         # First search the entire string for an AM/PM marker.
         pm = None
-        if re.search(r"([\d|\s]a[.]?m?[.]?$)|(morning)", string):
+        if re.search(r"([\d|\s]a\.?m?\.?$)|(morning)", string, re.I):
             wl_obj.time_format = 12
             pm = False
         elif re.search(
-          r"([\d|\s]p[.]?m?[.]?$)|(afternoon)|(evening)|(night)", string):
+          r"([\d|\s]p\.?m?\.?$)|(afternoon)|(evening)|(night)", string,
+          re.I):
             wl_obj.time_format = 12
             pm = True
         # end if
+        # Discard any am/pm markers.
+        for word in [
+          "morning", "afternoon", "evening", "night", "in", "the", "at",
+          "o'clock", "past"]:
+            string = re.sub(word, "", string, re.I)
+        # end for
+        string = ampm.sub("", string)
         word_list = []
         # If the string is all numbers (with or without a colon) it can
         #  be processed directly.
-        if re.match(r"\d{1,2}:?\d{0,2}\s?(a[.]?m?[.]?|p[.]?m?[.]?)?$", string):
+        if re.fullmatch(
+          r"\d{1,2}(:|\.)?\d{0,2}", string, re.I):
             num_list = re.split(r"\D", string)
             # if the first number is 3-4 digits, it can only be a
             #  complete time.  If it is 1-2 digits, it must be an hour,
@@ -768,13 +779,11 @@ def parse_time_input(wl_obj, string):
             raw_word_list = re.findall(r"\D+|\d+", raw_word)
             # If there aren't any combos, this will be a one-item list.
             for element in raw_word_list:
-                # Add to the final word list either the word or its
-                #  integer equivalent.
-                word_list.append(wl_resource.cardinal(element))
+                # Add each element to the word list.
+                word_list.append(element)
             # end for
         # end for
-        # With all numeric strings and number words converted to
-        #  integers, return either a time object or None.
+        # With the word list, return either a time object or None.
         return _create_time(wl_obj, word_list, pm)
     except Exception as err:
         _z_exc("wl_datetime/parse_time_input", err)
@@ -1067,11 +1076,11 @@ def _create_time(wl_obj, num_list, pm):
         # First, clean up the source list, converting all numeric
         #  strings to integers and deleting empty strings.
         s = []
-        for num in num_list:
-            # Screen out empty strings.
-            if num:
+        for element in num_list:
+            # Screen out empty strings, and the colon if it is captured.
+            if element and element != ":":
                 # Convert to integer if possible.
-                s.append(wl_resource.cardinal(num))
+                s.append(wl_resource.cardinal(element))
             # end if
         # end for
         num_list = s
@@ -1121,8 +1130,12 @@ def _create_time(wl_obj, num_list, pm):
             except (ValueError, IndexError):
                 minute = 0
             # end try
-            # Check the minutes.
-            if (minute > 59) or (minute < 0):
+            # Check the minutes.  First, if minutes is 100, set it to
+            #  zero (this means the original input was a 24-hour time
+            #  like "fifeen hundred" written out).
+            if minute == 100:
+                minute = 0
+            elif (minute > 59) or (minute < 0):
                 # If the time is found to be invalid at this point, make
                 #  sure that any change to the time_format attribute is
                 #  undone before returning.

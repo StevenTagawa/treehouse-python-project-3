@@ -154,7 +154,7 @@ class WlHelp:
         try:
             # Open the help text file.
             try:
-                with open("help.txt", newline="") as file:
+                with open("wl_help.txt", newline="") as file:
                     # Read the entire file into a temporary list.
                     input_list = file.readlines()
                 # end with
