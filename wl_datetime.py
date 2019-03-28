@@ -518,7 +518,7 @@ def parse_date_numeric(wl_obj, string):
           f"The date {string} is not valid in the currently selected " +
           "format, but is valid in a different format.  You can choose to " +
           "change the date format or re-enter the date for this task.",
-          str_=True)
+          ret_str=True)
         io_utils.print_status("Warning", msg, line_length=wl_obj.line_length)
         option_list = []
         for x, ndn in enumerate(valid_formats):
@@ -737,8 +737,8 @@ def parse_time_input(wl_obj, string):
         # end if
         # Discard any am/pm markers.
         for word in [
-          "morning", "afternoon", "evening", "night", "in", "the", "at",
-          "o'clock", "past"]:
+          "\bmorning\b", "\bafternoon\b", "\bevening\b", "\bnight\b", "\bin\b",
+          "\bthe\b", "\bat\b", "\bo'clock\b", "\bpast\b"]:
             string = re.sub(word, "", string, re.I)
         # end for
         string = ampm.sub("", string)

@@ -220,7 +220,7 @@ class WorkLog:
                     # If yes, just save the file now (bypass action_take
                     #  so that it will still exit).
                     if save:
-                        self._do_save
+                        self._do_save()
                     # end if
                 # end if
                 # Return the flag to end the object loop.
