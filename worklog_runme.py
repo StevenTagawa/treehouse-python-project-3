@@ -1,11 +1,6 @@
 """
     Script for Project 3 of the Treehouse Python Techdegree, Work Log.
-
-    Public Functions:
-    - main -- the main script.
-
-    Private Functions:
-    - _z_exc -- generic exception handler.
+   ---------------------------------------------------------------------
 """
 
 
